@@ -55,24 +55,68 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yUm-9B-A9N" customClass="RecordsTableViewCell" customModule="BeOK" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yUm-9B-A9N" id="M5p-1E-QWc">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="lKO-Bj-LCl" id="Yah-Fh-h2y"/>
+                            <outlet property="dataSource" destination="lKO-Bj-LCl" id="tH8-V0-z5V"/>
                             <outlet property="delegate" destination="lKO-Bj-LCl" id="Y35-3K-KQE"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Records" id="vyy-65-wjp"/>
+                    <navigationItem key="navigationItem" title="Records" id="Io2-P8-JYG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mqU-sY-5IE">
+                            <connections>
+                                <segue destination="9Go-le-96Z" kind="show" id="cHb-me-BEp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7h-Wt-9P0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="355"/>
+            <point key="canvasLocation" x="1562" y="355"/>
+        </scene>
+        <!--Add Record View Controller-->
+        <scene sceneID="heR-cE-BWs">
+            <objects>
+                <viewController id="9Go-le-96Z" customClass="AddRecordViewController" customModule="BeOK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nnK-wg-kA8"/>
+                        <viewControllerLayoutGuide type="bottom" id="l31-zx-yFL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CSP-9X-fn4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyx-kD-hIX">
+                                <rect key="frame" x="199" y="427" width="55" height="30"/>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmButton:" destination="9Go-le-96Z" eventType="touchUpInside" id="AOe-mz-6Vg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjW-l2-wNR">
+                                <rect key="frame" x="48" y="108" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BXn-3a-3Fn">
+                                <rect key="frame" x="48" y="137" width="246" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sIe-xJ-GoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2250" y="355"/>
         </scene>
         <!--Settings-->
         <scene sceneID="GaJ-Bn-4Vx">
@@ -105,13 +149,32 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="lKO-Bj-LCl" kind="relationship" relationship="viewControllers" id="Xmv-MK-QLD"/>
+                        <segue destination="E8b-Jn-hoa" kind="relationship" relationship="viewControllers" id="Xmv-MK-QLD"/>
                         <segue destination="WMR-jw-St8" kind="relationship" relationship="viewControllers" id="gSW-t4-R55"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Records-->
+        <scene sceneID="rrC-z3-JdH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E8b-Jn-hoa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Records" id="vyy-65-wjp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BM3-DD-n93">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lKO-Bj-LCl" kind="relationship" relationship="rootViewController" id="slU-rb-3Pb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tQs-JP-4d0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="355"/>
         </scene>
     </scenes>
     <resources>

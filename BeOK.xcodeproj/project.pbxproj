@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180E365B1D35D93C00B650E1 /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180E365A1D35D93C00B650E1 /* AddRecordViewController.swift */; };
 		180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A581D34129A00700D07 /* AppDelegate.swift */; };
 		180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A5A1D34129A00700D07 /* FirstViewController.swift */; };
 		180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A5C1D34129A00700D07 /* SecondViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180E365A1D35D93C00B650E1 /* AddRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		180F6A551D34129A00700D07 /* BeOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180F6A581D34129A00700D07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180F6A5A1D34129A00700D07 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				180F6A5A1D34129A00700D07 /* FirstViewController.swift */,
 				185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */,
 				185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */,
+				180E365A1D35D93C00B650E1 /* AddRecordViewController.swift */,
 				180F6A5C1D34129A00700D07 /* SecondViewController.swift */,
 				180F6A5E1D34129A00700D07 /* Main.storyboard */,
 				180F6A611D34129A00700D07 /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 			files = (
 				185ADE8F1D34195400910D08 /* RecordsTableViewController.swift in Sources */,
 				185ADE911D3419DE00910D08 /* RecordsTableViewCell.swift in Sources */,
+				180E365B1D35D93C00B650E1 /* AddRecordViewController.swift in Sources */,
 				185ADE931D341A1A00910D08 /* Record.swift in Sources */,
 				180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */,
 				180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */,
