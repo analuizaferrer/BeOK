@@ -7,17 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordsTableViewController: UITableViewController {
-
+    
+//    var recordsList: [Item] = []
+    
+    var recordsList = [NSManagedObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,16 +27,67 @@ class RecordsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordsTableViewCell
+        
+        let thisRecord = recordsList[indexPath.row]
+        
+        cell.dateLabel.text = "No date yet"
+        cell.descriptionLabel.text = thisRecord.valueForKey("attackDescription") as? String
+        
+//        let symptomsCount = thisRecord.symptoms?.count
+//        
+//        if symptomsCount > 1 {
+//            cell.symptomsLabel.text = "\(symptomsCount!) symptoms"
+//        }
+//        
+//        else {
+//            if symptomsCount == 1 {
+//                cell.symptomsLabel.text = "1 symptom"
+//            }
+//            
+//            else {
+//                cell.symptomsLabel.text = "No symptoms"
+//            }
+//        }
+        
+        return cell
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return recordsList.count
     }
-
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName: "Record")
+        
+        //3
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            recordsList = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

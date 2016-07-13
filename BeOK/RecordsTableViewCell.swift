@@ -10,6 +10,10 @@ import UIKit
 
 class RecordsTableViewCell: UITableViewCell {
     
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var symptomsLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
