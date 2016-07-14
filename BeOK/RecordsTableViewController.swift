@@ -66,16 +66,13 @@ class RecordsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //1
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        //2
         let fetchRequest = NSFetchRequest(entityName: "Record")
         
-        //3
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)

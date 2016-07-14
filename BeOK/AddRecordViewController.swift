@@ -36,6 +36,9 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
     }
@@ -113,6 +116,8 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
             
             locationManager.requestWhenInUseAuthorization()
             
+            locationManager.startUpdatingLocation()
+            
         }
         
         else {
@@ -152,6 +157,10 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         })
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 
