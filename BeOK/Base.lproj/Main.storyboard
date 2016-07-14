@@ -23,12 +23,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="di7-F8-zoj">
+                                <rect key="frame" x="70" y="201" width="461" height="246"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Breathe" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="copingMessage" destination="g0X-Xz-9Gk" id="V7T-3B-AHg"/>
+                        <outlet property="videoView" destination="di7-F8-zoj" id="GIY-7R-zF5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -309,6 +314,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gY2-SS-xU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="1553"/>
+        </scene>
+        <!--Record View Controller-->
+        <scene sceneID="3f7-wM-bIK">
+            <objects>
+                <viewController id="fsd-qu-PTo" customClass="RecordViewController" customModule="BeOK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kfR-vc-RuX"/>
+                        <viewControllerLayoutGuide type="bottom" id="dBv-2G-vip"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ikf-cc-aFn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXw-H3-7UR">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qXw-H3-7UR" secondAttribute="trailing" id="W1g-HO-Ic8"/>
+                            <constraint firstItem="qXw-H3-7UR" firstAttribute="leading" secondItem="Ikf-cc-aFn" secondAttribute="leading" id="W9l-Jf-fNb"/>
+                            <constraint firstItem="qXw-H3-7UR" firstAttribute="bottom" secondItem="dBv-2G-vip" secondAttribute="top" id="bBd-Ll-yP1"/>
+                            <constraint firstItem="qXw-H3-7UR" firstAttribute="top" secondItem="Ikf-cc-aFn" secondAttribute="top" id="ltL-vF-BAb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="recordScrollView" destination="qXw-H3-7UR" id="YMQ-SO-6SN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ddk-pI-oa8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729" y="-547"/>
         </scene>
         <!--Records-->
         <scene sceneID="rrC-z3-JdH">

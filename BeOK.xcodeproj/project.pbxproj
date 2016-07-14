@@ -19,6 +19,13 @@
 		185ADE8F1D34195400910D08 /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */; };
 		185ADE911D3419DE00910D08 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */; };
 		185ADE931D341A1A00910D08 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ADE921D341A1A00910D08 /* Record.swift */; };
+		F6A89B8F1D382B44003DB910 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B8E1D382B44003DB910 /* RecordViewController.swift */; };
+		F6A89B921D382BA5003DB910 /* View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B901D382BA5003DB910 /* View1.swift */; };
+		F6A89B931D382BA5003DB910 /* View1.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A89B911D382BA5003DB910 /* View1.xib */; };
+		F6A89B961D382D44003DB910 /* View2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B941D382D44003DB910 /* View2.swift */; };
+		F6A89B971D382D44003DB910 /* View2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A89B951D382D44003DB910 /* View2.xib */; };
+		F6A89B9A1D382F92003DB910 /* View3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B981D382F92003DB910 /* View3.swift */; };
+		F6A89B9B1D382F92003DB910 /* View3.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A89B991D382F92003DB910 /* View3.xib */; };
 		F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */; };
 		F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +45,13 @@
 		185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
 		185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		185ADE921D341A1A00910D08 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		F6A89B8E1D382B44003DB910 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		F6A89B901D382BA5003DB910 /* View1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View1.swift; sourceTree = "<group>"; };
+		F6A89B911D382BA5003DB910 /* View1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View1.xib; sourceTree = "<group>"; };
+		F6A89B941D382D44003DB910 /* View2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View2.swift; sourceTree = "<group>"; };
+		F6A89B951D382D44003DB910 /* View2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View2.xib; sourceTree = "<group>"; };
+		F6A89B981D382F92003DB910 /* View3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View3.swift; sourceTree = "<group>"; };
+		F6A89B991D382F92003DB910 /* View3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View3.xib; sourceTree = "<group>"; };
 		F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +112,12 @@
 			children = (
 				180F6A5E1D34129A00700D07 /* Main.storyboard */,
 				180F6A631D34129A00700D07 /* LaunchScreen.storyboard */,
+				F6A89B901D382BA5003DB910 /* View1.swift */,
+				F6A89B911D382BA5003DB910 /* View1.xib */,
+				F6A89B941D382D44003DB910 /* View2.swift */,
+				F6A89B951D382D44003DB910 /* View2.xib */,
+				F6A89B981D382F92003DB910 /* View3.swift */,
+				F6A89B991D382F92003DB910 /* View3.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -112,6 +132,7 @@
 				180F6A5C1D34129A00700D07 /* SecondViewController.swift */,
 				F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */,
 				F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */,
+				F6A89B8E1D382B44003DB910 /* RecordViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -176,6 +197,9 @@
 			files = (
 				180F6A651D34129A00700D07 /* LaunchScreen.storyboard in Resources */,
 				180F6A621D34129A00700D07 /* Assets.xcassets in Resources */,
+				F6A89B9B1D382F92003DB910 /* View3.xib in Resources */,
+				F6A89B931D382BA5003DB910 /* View1.xib in Resources */,
+				F6A89B971D382D44003DB910 /* View2.xib in Resources */,
 				180F6A601D34129A00700D07 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,14 +213,18 @@
 			files = (
 				185ADE8F1D34195400910D08 /* RecordsTableViewController.swift in Sources */,
 				185ADE911D3419DE00910D08 /* RecordsTableViewCell.swift in Sources */,
+				F6A89B9A1D382F92003DB910 /* View3.swift in Sources */,
 				180E367F1D36C90A00B650E1 /* BeOK.xcdatamodeld in Sources */,
 				180E365B1D35D93C00B650E1 /* AddRecordViewController.swift in Sources */,
 				185ADE931D341A1A00910D08 /* Record.swift in Sources */,
+				F6A89B8F1D382B44003DB910 /* RecordViewController.swift in Sources */,
 				180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */,
 				180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */,
 				180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */,
 				F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */,
+				F6A89B921D382BA5003DB910 /* View1.swift in Sources */,
 				F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */,
+				F6A89B961D382D44003DB910 /* View2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

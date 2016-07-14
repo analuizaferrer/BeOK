@@ -7,16 +7,34 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var copingMessage: UILabel!
     
-    var breathe: UIView!
+    @IBOutlet weak var videoView: UIView!
+    
+    var videoName: String!
+    
+    let playerLayer = AVPlayerLayer()
+    
+    var player = AVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+      
+//        let filePath = NSBundle.mainBundle().pathForResource(videoName, ofType: "mov")
+//        
+//        let fileUrl = NSURL(fileURLWithPath: filePath!)
+//        player = AVPlayer(URL: fileUrl)
+//        
+//        playerLayer.player = player
+//        videoView.layer.addSublayer(playerLayer)
+//        
+//        player.play()
         
     }
 
@@ -24,7 +42,10 @@ class FirstViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+//    override func viewDidLayoutSubviews() {
+//        playerLayer.frame = videoView.bounds
+//    }
+    
 }
 
