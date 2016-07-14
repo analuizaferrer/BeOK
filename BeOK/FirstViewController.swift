@@ -10,6 +10,8 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    @IBOutlet weak var copingMessage: UILabel!
+    
     var breathe: UIView!
     
     override func viewDidLoad() {

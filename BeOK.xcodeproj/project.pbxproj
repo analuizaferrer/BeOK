@@ -19,6 +19,8 @@
 		185ADE8F1D34195400910D08 /* RecordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */; };
 		185ADE911D3419DE00910D08 /* RecordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */; };
 		185ADE931D341A1A00910D08 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ADE921D341A1A00910D08 /* Record.swift */; };
+		F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */; };
+		F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsTableViewController.swift; sourceTree = "<group>"; };
 		185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsTableViewCell.swift; sourceTree = "<group>"; };
 		185ADE921D341A1A00910D08 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,20 +74,46 @@
 		180F6A571D34129A00700D07 /* BeOK */ = {
 			isa = PBXGroup;
 			children = (
+				F6D309581D381C7E0051CE99 /* Model */,
+				F6D309591D381C940051CE99 /* View */,
+				F6D3095A1D381CA10051CE99 /* Controller */,
 				180F6A581D34129A00700D07 /* AppDelegate.swift */,
+				180F6A611D34129A00700D07 /* Assets.xcassets */,
+			);
+			path = BeOK;
+			sourceTree = "<group>";
+		};
+		F6D309581D381C7E0051CE99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				185ADE921D341A1A00910D08 /* Record.swift */,
+				180E367D1D36C90A00B650E1 /* BeOK.xcdatamodeld */,
+				180F6A661D34129A00700D07 /* Info.plist */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F6D309591D381C940051CE99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				180F6A5E1D34129A00700D07 /* Main.storyboard */,
+				180F6A631D34129A00700D07 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F6D3095A1D381CA10051CE99 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				180F6A5A1D34129A00700D07 /* FirstViewController.swift */,
 				185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */,
 				185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */,
 				180E365A1D35D93C00B650E1 /* AddRecordViewController.swift */,
 				180F6A5C1D34129A00700D07 /* SecondViewController.swift */,
-				180F6A5E1D34129A00700D07 /* Main.storyboard */,
-				180F6A611D34129A00700D07 /* Assets.xcassets */,
-				180F6A631D34129A00700D07 /* LaunchScreen.storyboard */,
-				180F6A661D34129A00700D07 /* Info.plist */,
-				180E367D1D36C90A00B650E1 /* BeOK.xcdatamodeld */,
+				F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */,
+				F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */,
 			);
-			path = BeOK;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +195,8 @@
 				180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */,
 				180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */,
 				180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */,
+				F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */,
+				F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
