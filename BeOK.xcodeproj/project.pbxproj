@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		180E365B1D35D93C00B650E1 /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180E365A1D35D93C00B650E1 /* AddRecordViewController.swift */; };
 		180E367F1D36C90A00B650E1 /* BeOK.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 180E367D1D36C90A00B650E1 /* BeOK.xcdatamodeld */; };
+		180E36A21D37F70F00B650E1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180E36A11D37F70F00B650E1 /* CoreLocation.framework */; };
 		180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A581D34129A00700D07 /* AppDelegate.swift */; };
 		180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A5A1D34129A00700D07 /* FirstViewController.swift */; };
 		180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A5C1D34129A00700D07 /* SecondViewController.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		180E365A1D35D93C00B650E1 /* AddRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		180E367E1D36C90A00B650E1 /* BeOK.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeOK.xcdatamodel; sourceTree = "<group>"; };
+		180E36A11D37F70F00B650E1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		180F6A551D34129A00700D07 /* BeOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180F6A581D34129A00700D07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180F6A5A1D34129A00700D07 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180E36A21D37F70F00B650E1 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +53,7 @@
 		180F6A4C1D34129A00700D07 = {
 			isa = PBXGroup;
 			children = (
+				180E36A11D37F70F00B650E1 /* CoreLocation.framework */,
 				180F6A571D34129A00700D07 /* BeOK */,
 				180F6A561D34129A00700D07 /* Products */,
 			);

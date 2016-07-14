@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+import AddressBookUI
 
-class AddRecordViewController: UIViewController {
+class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var triggersLabel: UITextField!
@@ -17,15 +19,25 @@ class AddRecordViewController: UIViewController {
     
     var recordsList = [NSManagedObject]()
     
+    var locationManager: CLLocationManager!
+    
+    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
+    let apikey = "YOUR_API_KEY"
+    
+    var location: CLLocation! {
+        
+        didSet {
+        
+            reverseGeocoding(location.coordinate.latitude, longitude: location.coordinate.longitude)
+            
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -49,35 +61,98 @@ class AddRecordViewController: UIViewController {
     
     func saveRecord(date: NSDate, location: String, triggers: String, symptoms: [Symptom], description: String) {
         
-        //1
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        //2
         let entity =  NSEntityDescription.entityForName("Record",
                                                         inManagedObjectContext:managedContext)
         
         let record = NSManagedObject(entity: entity!,
                                      insertIntoManagedObjectContext: managedContext)
-        
-        //3
+    
         record.setValue(date, forKey: "date")
         record.setValue(location, forKey: "location")
         record.setValue(triggers, forKey: "triggers")
         record.setValue("", forKey: "symptoms")
         record.setValue(description, forKey: "attackDescription")
         
-        
-        //4
         do {
             try managedContext.save()
-            //5
+            
             recordsList.append(record)
-        } catch let error as NSError  {
+            
+        }
+        
+        catch let error as NSError  {
+            
             print("Could not save \(error), \(error.userInfo)")
+        
         }
     }
+    
+    @IBAction func updateLocationAction(sender: AnyObject) {
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        checkCoreLocationPermission()
+        
+    }
+    
+    func checkCoreLocationPermission () {
+        
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            
+            locationManager.startUpdatingLocation()
+            
+        }
+        
+        else if CLLocationManager.authorizationStatus() == .NotDetermined {
+            
+            locationManager.requestWhenInUseAuthorization()
+            
+        }
+        
+        else {
+            
+            let alert = UIAlertController(title: "Hold Up...", message: "Before you continue, Be OK wants access to your location. Turn on Location Services in your device settings.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    // MARK: - CLLocatioManagerDelegate
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        location = locations.last
+        
+        locationManager.stopUpdatingLocation()
+        
+    }
+    
+    func reverseGeocoding(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            if error != nil {
+                print(error)
+                return
+            }
+            else if placemarks?.count > 0 {
+                let pm = placemarks![0]
+                let address = ABCreateStringWithAddressDictionary(pm.addressDictionary!, false)
+                self.locationTextField.text = "\(address)"
+                if pm.areasOfInterest?.count > 0 {
+                    let areaOfInterest = pm.areasOfInterest?[0]
+                    self.locationTextField.text = "\(areaOfInterest!)"
+                }
+            }
+        })
+    }
+
 
 }
