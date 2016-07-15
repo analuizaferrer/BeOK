@@ -18,23 +18,19 @@ class FirstViewController: UIViewController {
     
     var videoName: String!
     
-    let playerLayer = AVPlayerLayer()
-    
-    var player = AVPlayer()
+  @IBOutlet weak var breathingCircle: UIImageView!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
       
-//        let filePath = NSBundle.mainBundle().pathForResource(videoName, ofType: "mov")
-//        
-//        let fileUrl = NSURL(fileURLWithPath: filePath!)
-//        player = AVPlayer(URL: fileUrl)
-//        
-//        playerLayer.player = player
-//        videoView.layer.addSublayer(playerLayer)
-//        
-//        player.play()
+      UIView.animateWithDuration(1.6, delay: 0.0, options: [], animations: {
+        
+        //breathingCircle.
+        
+        
+        }, completion: nil)
         
     }
 
