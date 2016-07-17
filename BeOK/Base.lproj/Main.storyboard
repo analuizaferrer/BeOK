@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Breathe-->
@@ -21,12 +22,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" red="0.42352941176470588" green="0.34901960784313724" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Coping message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0X-Xz-9Gk">
-                                <rect key="frame" x="236" y="0.0" width="128" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circuloRespiracao" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-AV-JbI">
                                 <rect key="frame" x="237" y="237" width="126" height="126"/>
                             </imageView>
@@ -44,19 +39,29 @@
                                     <color key="titleColor" red="0.2627450980392157" green="0.25490196078431371" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coping message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0X-Xz-9Gk">
+                                <rect key="frame" x="20" y="50" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="centerX" secondItem="g0X-Xz-9Gk" secondAttribute="centerX" id="1kV-2j-X3C"/>
+                            <constraint firstItem="g0X-Xz-9Gk" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="2kr-QK-iEl"/>
+                            <constraint firstItem="g0X-Xz-9Gk" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="7mu-cz-lfI"/>
                             <constraint firstItem="oE2-AV-JbI" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="9n2-q3-QuI"/>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Fmo-dP-tni"/>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="GIX-gR-t6F"/>
+                            <constraint firstItem="g0X-Xz-9Gk" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="Jdl-pW-rHm"/>
                             <constraint firstItem="oE2-AV-JbI" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="SNq-YC-N5f"/>
                             <constraint firstItem="J1J-br-3bq" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Si2-8O-MYp"/>
                             <constraint firstItem="oE2-AV-JbI" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="XL3-pz-ZYr"/>
                             <constraint firstAttribute="trailing" secondItem="HDO-3Y-qt0" secondAttribute="trailing" id="ftY-Eq-OzO"/>
                             <constraint firstItem="DZN-lO-4Iz" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="mLQ-fO-hL0"/>
                             <constraint firstItem="J1J-br-3bq" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="pAC-8c-IH8"/>
+                            <constraint firstItem="g0X-Xz-9Gk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="30" id="rCi-s5-cKX"/>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="wZ4-Vl-dPQ"/>
                             <constraint firstItem="oE2-AV-JbI" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="wi0-Fe-hl4"/>
                             <constraint firstItem="DZN-lO-4Iz" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="wja-A1-fup"/>
@@ -78,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="705" y="-259"/>
         </scene>
         <!--Records-->
         <scene sceneID="Sn5-i3-zl3">
