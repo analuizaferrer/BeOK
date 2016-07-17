@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -30,22 +30,50 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circuloRespiracao" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-AV-JbI">
                                 <rect key="frame" x="237" y="237" width="126" height="126"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1J-br-3bq">
+                                <rect key="frame" x="252" y="277" width="97" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="OUT">
+                                    <color key="titleColor" red="0.26274509800000001" green="0.25490196079999999" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-lO-4Iz">
+                                <rect key="frame" x="255" y="277" width="91" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="IN">
+                                    <color key="titleColor" red="0.2627450980392157" green="0.25490196078431371" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="centerX" secondItem="g0X-Xz-9Gk" secondAttribute="centerX" id="1kV-2j-X3C"/>
+                            <constraint firstItem="oE2-AV-JbI" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="9n2-q3-QuI"/>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="Fmo-dP-tni"/>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="GIX-gR-t6F"/>
                             <constraint firstItem="oE2-AV-JbI" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="SNq-YC-N5f"/>
+                            <constraint firstItem="J1J-br-3bq" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Si2-8O-MYp"/>
+                            <constraint firstItem="oE2-AV-JbI" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="XL3-pz-ZYr"/>
                             <constraint firstAttribute="trailing" secondItem="HDO-3Y-qt0" secondAttribute="trailing" id="ftY-Eq-OzO"/>
+                            <constraint firstItem="DZN-lO-4Iz" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="mLQ-fO-hL0"/>
+                            <constraint firstItem="J1J-br-3bq" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="pAC-8c-IH8"/>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="wZ4-Vl-dPQ"/>
                             <constraint firstItem="oE2-AV-JbI" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="wi0-Fe-hl4"/>
+                            <constraint firstItem="DZN-lO-4Iz" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="wja-A1-fup"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SNq-YC-N5f"/>
+                                <exclude reference="wi0-Fe-hl4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Breathe" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="breathingCircle" destination="oE2-AV-JbI" id="RsQ-xQ-BL0"/>
+                        <outlet property="centerButton" destination="DZN-lO-4Iz" id="itq-8V-n4t"/>
                         <outlet property="copingMessage" destination="g0X-Xz-9Gk" id="V7T-3B-AHg"/>
+                        <outlet property="outButton" destination="J1J-br-3bq" id="qc0-0J-sip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
