@@ -45,7 +45,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         self.secondView = AddRecordView2(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         self.thirdView = AddRecordView3(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         
-        self.view = firstView
+        self.view = secondView
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
 //        view.addGestureRecognizer(tap)
