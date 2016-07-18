@@ -36,6 +36,22 @@ class RecordDetailsViewController: UIViewController {
         locationLabel.text = record.valueForKey("location") as! String
         self.view.addSubview(locationLabel)
         
+        let symptomsLabel = UILabel(frame: CGRectMake(15.59,259,400,18))
+        symptomsLabel.text = "# symptoms"
+        symptomsLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
+        self.view.addSubview(symptomsLabel)
+        
+        let descriptionHeaderLabel = UILabel(frame: CGRectMake(15.2,367,400,18))
+        descriptionHeaderLabel.text = "What went through your head?"
+        descriptionHeaderLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
+        self.view.addSubview(descriptionHeaderLabel)
+        
+        let descriptionBodyLabel = UILabel(frame: CGRectMake(15.2,395,299,80))
+        descriptionBodyLabel.text = record.valueForKey("attackDescription") as! String
+        descriptionBodyLabel.numberOfLines = 3
+        descriptionBodyLabel.sizeToFit()
+        self.view.addSubview(descriptionBodyLabel)
+        
     }
 
     override func didReceiveMemoryWarning() {
