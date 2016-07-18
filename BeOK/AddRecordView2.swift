@@ -12,7 +12,7 @@ import Foundation
 class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var symptomsLabel = UILabel(frame: CGRectMake(15,91,400,18))
-    var otherSymptomTextField = UITextField(frame: CGRectMake(50,133,50,24))
+    var otherSymptomTextField = UITextField(frame: CGRectMake(50,133,300,24))
     var symptomsTableView = UITableView(frame: CGRectMake(15, 172, 338, 300))
     var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
     

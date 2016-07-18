@@ -27,10 +27,17 @@ class AddRecordView3: UIView {
         self.pageCounter.image = UIImage(named: "PageCounter3")
         self.addSubview(pageCounter)
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.addGestureRecognizer(tap)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func dismissKeyboard() {
+        self.endEditing(true)
     }
     
 }
