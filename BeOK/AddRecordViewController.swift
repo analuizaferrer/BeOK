@@ -133,19 +133,26 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     
     func saveRecord(date: NSDate, duration: Int, location: String, description: String) {
         
-        //loadSymptomsArray(secondView.symptoms, symptomsBool: secondView.checked, other: secondView.otherSymptomTextField.text!)
+        loadSymptomsArray(secondView.symptomsList, symptomsBool: secondView.checked, other: secondView.otherSymptomTextField.text!)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
-        let entity =  NSEntityDescription.entityForName("Record", inManagedObjectContext:managedContext)
-        
-        let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let recordEntity =  NSEntityDescription.entityForName("Record", inManagedObjectContext: managedContext)
+        let record = NSManagedObject(entity: recordEntity!, insertIntoManagedObjectContext: managedContext)
     
         record.setValue(date, forKey: "date")
         record.setValue(duration, forKey: "duration")
         record.setValue(location, forKey: "location")
         record.setValue(description, forKey: "attackDescription")
+        
+        let symptomEntity = NSEntityDescription.entityForName("Symptom", inManagedObjectContext: managedContext)
+        let newSymptom = NSManagedObject(entity: symptomEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        newSymptom.setValue("Jim", forKey: "symptom")
+        
+        let symptomsRecordRelationship = record.mutableSetValueForKey("symptoms")
+        symptomsRecordRelationship.addObject(newSymptom)
         
         do {
             try managedContext.save()
@@ -164,6 +171,8 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     func loadSymptomsArray (symptomsNames: [String], symptomsBool: [Bool], other: String) {
         
         var i = 0
+        
+        self.recordSymptoms = []
         
         for symptom in symptomsBool {
             

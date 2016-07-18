@@ -16,9 +16,7 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     var symptomsTableView = UITableView(frame: CGRectMake(15, 172, 338, 300))
     var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
     
-    var symptoms: [String] = ["Hyperventilation", "Dizziness", "Nausea", "Chest Pain", "Accelerated Heartbeat"]
-    
-    var recordSymptoms: [String]!
+    var symptomsList: [String] = ["Hyperventilation", "Dizziness", "Nausea", "Chest Pain", "Accelerated Heartbeat"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,7 +45,7 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.symptoms.count
+        return self.symptomsList.count
     }
     
     var checked: [Bool] = [false, false, false, false, false]
@@ -58,7 +56,7 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
        
         UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         
-        cell.textLabel?.text = self.symptoms[indexPath.row]
+        cell.textLabel?.text = self.symptomsList[indexPath.row]
         
         if !checked[indexPath.row] {
             cell.accessoryType = .None
