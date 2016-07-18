@@ -35,6 +35,8 @@
 		F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */; };
 		F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */; };
 		F6E313291D3D26F80006374B /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E313281D3D26F80006374B /* SoundsTableViewController.swift */; };
+		F6E3132B1D3D2B730006374B /* Cicadas noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6E3132A1D3D2B730006374B /* Cicadas noise.mp3 */; };
+		F6E3132D1D3D2B980006374B /* Rainforest sounds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F6E3132C1D3D2B980006374B /* Rainforest sounds.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		F6E313281D3D26F80006374B /* SoundsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
+		F6E3132A1D3D2B730006374B /* Cicadas noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cicadas noise.mp3"; sourceTree = "<group>"; };
+		F6E3132C1D3D2B980006374B /* Rainforest sounds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Rainforest sounds.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,10 +161,15 @@
 		F6E313271D3D26A30006374B /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				F6E3132C1D3D2B980006374B /* Rainforest sounds.mp3 */,
+				F6E3132A1D3D2B730006374B /* Cicadas noise.mp3 */,
 				180F6A661D34129A00700D07 /* Info.plist */,
 				180F6A581D34129A00700D07 /* AppDelegate.swift */,
+<<<<<<< HEAD
 				18AAEE741D3D3FA800F89517 /* Cicadas noise.mp3 */,
 				18AAEE751D3D3FA800F89517 /* Rainforest sounds.mp3 */,
+=======
+>>>>>>> a9a759bff0980f260d6457322dc7c4d68a582f3c
 				180F6A611D34129A00700D07 /* Assets.xcassets */,
 			);
 			name = "Supporting files";
@@ -227,7 +236,12 @@
 				180F6A651D34129A00700D07 /* LaunchScreen.storyboard in Resources */,
 				180F6A621D34129A00700D07 /* Assets.xcassets in Resources */,
 				F6A89B9B1D382F92003DB910 /* View3.xib in Resources */,
+<<<<<<< HEAD
 				18AAEE761D3D3FA800F89517 /* Cicadas noise.mp3 in Resources */,
+=======
+				F6E3132B1D3D2B730006374B /* Cicadas noise.mp3 in Resources */,
+				F6E3132D1D3D2B980006374B /* Rainforest sounds.mp3 in Resources */,
+>>>>>>> a9a759bff0980f260d6457322dc7c4d68a582f3c
 				F6A89B931D382BA5003DB910 /* View1.xib in Resources */,
 				F6A89B971D382D44003DB910 /* View2.xib in Resources */,
 				18AAEE771D3D3FA800F89517 /* Rainforest sounds.mp3 in Resources */,
