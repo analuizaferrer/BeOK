@@ -31,7 +31,7 @@ class AddRecordView1: UIView {
         self.backgroundColor = UIColor.whiteColor()
         
         self.dateLabel.text = "When was the panic attack?"
-        self.dateLabel.textColor = UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1)
+        self.dateLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(dateLabel)
         
         date = NSDate()
@@ -39,7 +39,7 @@ class AddRecordView1: UIView {
         self.addSubview(datePicker)
         
         self.durationLabel.text = "How long did it last?"
-        self.durationLabel.textColor = UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1)
+        self.durationLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(durationLabel)
         
         self.durationRead.text = "\(durationValue) min"
@@ -47,23 +47,23 @@ class AddRecordView1: UIView {
         
         self.addSubview(durationPlusButton)
         self.durationPlusButton.setTitle("+", forState: UIControlState.Normal)
-        self.durationPlusButton.setTitleColor(UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1), forState: UIControlState.Normal)
+        self.durationPlusButton.setTitleColor(UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1), forState: UIControlState.Normal)
         self.durationPlusButton.addTarget(self, action: #selector(increaseDurationValue), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.addSubview(durationMinusButton)
         self.durationMinusButton.setTitle("-", forState: UIControlState.Normal)
-        self.durationMinusButton.setTitleColor(UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1), forState: UIControlState.Normal)
+        self.durationMinusButton.setTitleColor(UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1), forState: UIControlState.Normal)
         self.durationMinusButton.addTarget(self, action: #selector(decreaseDurationValue), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.locationLabel.text = "Where were you?"
-        self.locationLabel.textColor = UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1)
+        self.locationLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(locationLabel)
         
         self.locationTextField.text = "Office"
         self.addSubview(locationTextField)
         
         self.getLocationButton.setTitle("Get Current Location", forState: UIControlState.Normal)
-        self.getLocationButton.setTitleColor(UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1), forState: UIControlState.Normal)
+        self.getLocationButton.setTitleColor(UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1), forState: UIControlState.Normal)
         self.addSubview(getLocationButton)
         
         self.pageCounter.image = UIImage(named: "PageCounter1")

@@ -123,7 +123,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
             let nextVC = segue.destinationViewController as! RecordsTableViewController
             
             if self.view == thirdView {
-                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextField.text!, symptoms: [], description: thirdView.descriptionTextField.text!)
+                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextField.text!, description: thirdView.descriptionTextField.text!)
             }
             
             nextVC.tableView.reloadData()
@@ -131,9 +131,9 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func saveRecord(date: NSDate, duration: Int, location: String, symptoms: [Symptom], description: String) {
+    func saveRecord(date: NSDate, duration: Int, location: String, description: String) {
         
-        loadSymptomsArray(secondView.symptoms, symptomsBool: secondView.checked, other: secondView.otherSymptomTextField.text!)
+        //loadSymptomsArray(secondView.symptoms, symptomsBool: secondView.checked, other: secondView.otherSymptomTextField.text!)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -145,7 +145,6 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         record.setValue(date, forKey: "date")
         record.setValue(duration, forKey: "duration")
         record.setValue(location, forKey: "location")
-        record.setValue("", forKey: "symptoms")
         record.setValue(description, forKey: "attackDescription")
         
         do {
