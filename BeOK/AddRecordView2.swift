@@ -27,7 +27,7 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
         self.symptomsLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(symptomsLabel)
         
-        self.otherSymptomTextField.text = "Other"
+        self.otherSymptomTextField.placeholder = "Other"
         self.addSubview(otherSymptomTextField)
         
         self.symptomsTableView.delegate = self

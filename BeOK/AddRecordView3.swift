@@ -21,7 +21,7 @@ class AddRecordView3: UIView {
         self.descriptionLabel.text = "What went through your head?"
         self.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(descriptionLabel)
-        self.descriptionTextField.text = "..."
+        self.descriptionTextField.placeholder = "Write up any relevant information"
         self.descriptionTextField.contentVerticalAlignment = .Top
         self.addSubview(descriptionTextField)
         self.pageCounter.image = UIImage(named: "PageCounter3")

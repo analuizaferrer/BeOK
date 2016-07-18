@@ -18,10 +18,12 @@ class AddRecordView1: UIView {
     var durationPlusButton = UIButton(frame: CGRectMake(130,343,18,36))
     var durationMinusButton = UIButton(frame: CGRectMake(15,337,18,48))
     var locationLabel = UILabel(frame: CGRectMake(15,400,200,18))
-    var locationTextField = UITextField(frame: CGRectMake(15,433,49,20))
+    var locationTextField = UITextField(frame: CGRectMake(15,433,350,20))
     var getLocationButton = UIButton(frame: CGRectMake(170,400,200,18))
     var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
-    
+  
+
+  
     var durationValue = 30
     var date: NSDate!
     
@@ -59,7 +61,7 @@ class AddRecordView1: UIView {
         self.locationLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(locationLabel)
         
-        self.locationTextField.text = "Office"
+        self.locationTextField.placeholder = "i.e. office, home etc"
         self.addSubview(locationTextField)
         
         self.getLocationButton.setTitle("Get Current Location", forState: UIControlState.Normal)
@@ -82,12 +84,12 @@ class AddRecordView1: UIView {
     }
     
     func increaseDurationValue (sender: UIButton) {
-        durationValue += 1
+        durationValue += 5
         durationRead.text = "\(durationValue) min"
     }
     
     func decreaseDurationValue (sender: UIButton) {
-        durationValue -= 1
+        durationValue -= 5
         durationRead.text = "\(durationValue) min"
     }
     
