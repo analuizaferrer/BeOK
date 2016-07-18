@@ -20,7 +20,7 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var videoView: UIView!
     
     
-    var audioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas-noise", ofType: "mp3")!)
+    var audioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
     
     var audioPlayer = AVAudioPlayer()
     

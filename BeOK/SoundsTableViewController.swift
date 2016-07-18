@@ -1,19 +1,27 @@
 //
-//  SettingsTableViewController.swift
+//  SoundsTableViewController.swift
 //  BeOK
 //
-//  Created by Helena Leitão on 14/07/16.
+//  Created by Helena Leitão on 18/07/16.
 //  Copyright © 2016 Ana Luiza Ferrer. All rights reserved.
 //
 
 import UIKit
+import AVFoundation
 
-class SettingsTableViewController: UITableViewController {
+class SoundsTableViewController: UITableViewController {
 
+    var sounds: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        sounds += ["Rainforest sounds", "Cicadas noise"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,27 +31,34 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 && indexPath.row == 0 {
-            performSegueWithIdentifier("segueToMessages", sender: self)
-        } else if indexPath.section == 0 && indexPath.row == 1 {
-            performSegueWithIdentifier("segueToSounds", sender: self)
-        } else if indexPath.section == 1 && indexPath.row == 0 {
-            
-        }
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return sounds.count
     }
-    
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
-        // Configure the cell...
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+
+        cell.textLabel?.text = sounds[indexPath.row]
 
         return cell
     }
-    */
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let audioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(sounds[indexPath.row], ofType: "mp3")!)
+        var audioPlayer = AVAudioPlayer()
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOfURL: audioURL, fileTypeHint: nil)
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+        }
+        catch let error as NSError {
+            print(error.description)
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -265,6 +265,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="3eD-jw-xwe"/>
                     <connections>
                         <segue destination="g6t-AX-gmi" kind="show" identifier="segueToMessages" id="nGq-Qd-cgy"/>
+                        <segue destination="1I2-Hz-G9D" kind="show" identifier="segueToSounds" id="VjQ-Ic-T2t"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTY-3v-r8k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,6 +307,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gY2-SS-xU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="1553"/>
+        </scene>
+        <!--Sounds-->
+        <scene sceneID="GBR-eD-edX">
+            <objects>
+                <tableViewController id="1I2-Hz-G9D" customClass="SoundsTableViewController" customModule="BeOK" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gXa-kz-F4m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PvH-H8-RmR">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PvH-H8-RmR" id="NUD-f5-k3V">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1I2-Hz-G9D" id="x1X-IB-wiP"/>
+                            <outlet property="delegate" destination="1I2-Hz-G9D" id="0Hw-zv-fh6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Sounds" id="bFp-Gd-VKn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIc-0f-IUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1516" y="1553"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="3f7-wM-bIK">
