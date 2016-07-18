@@ -13,16 +13,17 @@ import AddressBookUI
 
 class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     
-    var firstView : UIView!
-    var secondView : UIView!
-    var thirdView: UIView!
+    var firstView : AddRecordView1!
+    var secondView : AddRecordView2!
+    var thirdView: AddRecordView3!
     
-//    @IBOutlet var locationTextField: UITextField!
-//    @IBOutlet var triggersLabel: UITextField!
-//    @IBOutlet var descriptionTextField: UITextField!
+    var recordsList = [NSManagedObject]()
     
-//    var recordsList = [NSManagedObject]()
-//    
+    var leftNavBarButton: UIBarButtonItem!
+    var rightNavBarButton: UIBarButtonItem!
+    
+    var navItem: UINavigationItem!
+    
 //    var locationManager: CLLocationManager!
 //    
 //    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
@@ -45,66 +46,117 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         self.secondView = AddRecordView2(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         self.thirdView = AddRecordView3(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         
-        self.view = secondView
+        self.view = firstView
         
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-//        view.addGestureRecognizer(tap)
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+       
+        navItem = UINavigationItem(title: "New Record")
+        
+        rightNavBarButton = UIBarButtonItem(title: "Next", style: .Plain, target: self, action: #selector(self.rightBarButtonAction))
+        navItem.rightBarButtonItem = rightNavBarButton
+        
+       
+        leftNavBarButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(self.leftBarButtonAction))
+        navItem.leftBarButtonItem = leftNavBarButton
+        
+        self.navigationController?.navigationBar.setItems([navItem], animated: false)
 
-        // Do any additional setup after loading the view.
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        if (segue.identifier == "segueToRecords") {
-//            // pass data to next view
-//            
-//            let nextVC = segue.destinationViewController as! RecordsTableViewController
-//            
-//            self.saveRecord(NSDate(), location: locationTextField.text!, triggers: triggersLabel.text!, symptoms: [], description: descriptionTextField.text!)
-//            
-//            nextVC.tableView.reloadData()
-//            
-//        }
-//    }
-//    
-//    @IBAction func confirmButton(sender: AnyObject) {
-//        
-//        performSegueWithIdentifier("segueToRecords", sender: self)
-//        
-//    }
-//    
-//    func saveRecord(date: NSDate, location: String, triggers: String, symptoms: [Symptom], description: String) {
-//        
-//        let appDelegate =
-//            UIApplication.sharedApplication().delegate as! AppDelegate
-//        
-//        let managedContext = appDelegate.managedObjectContext
-//        
-//        let entity =  NSEntityDescription.entityForName("Record",
-//                                                        inManagedObjectContext:managedContext)
-//        
-//        let record = NSManagedObject(entity: entity!,
-//                                     insertIntoManagedObjectContext: managedContext)
-//    
-//        record.setValue(date, forKey: "date")
-//        record.setValue(location, forKey: "location")
-//        record.setValue(triggers, forKey: "triggers")
-//        record.setValue("", forKey: "symptoms")
-//        record.setValue(description, forKey: "attackDescription")
-//        
-//        do {
-//            try managedContext.save()
-//            
-//            recordsList.append(record)
-//            
-//        }
-//        
-//        catch let error as NSError  {
-//            
-//            print("Could not save \(error), \(error.userInfo)")
-//        
-//        }
-//    }
-//    
+    func rightBarButtonAction(sender: UIBarButtonItem) {
+        
+        if self.view == firstView {
+            self.view = secondView
+            leftNavBarButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: #selector(self.leftBarButtonAction))
+            navItem.leftBarButtonItem = leftNavBarButton
+        }
+        
+        else {
+            
+            if self.view == secondView {
+                rightNavBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(self.rightBarButtonAction))
+                navItem.rightBarButtonItem = rightNavBarButton
+                self.view = thirdView
+            }
+            
+            else {
+                if self.view == thirdView {
+                    performSegueWithIdentifier("segueToRecords", sender: self)
+                }
+            }
+        }
+        
+    }
+    
+    func leftBarButtonAction(sender: UIBarButtonItem) {
+        
+        if self.view == thirdView {
+            self.view = secondView
+            rightNavBarButton = UIBarButtonItem(title: "Next", style: .Plain, target: self, action: #selector(self.rightBarButtonAction))
+            navItem.rightBarButtonItem = rightNavBarButton
+        }
+        
+        else {
+            
+            if self.view == secondView {
+                self.view = firstView
+                leftNavBarButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(self.leftBarButtonAction))
+                navItem.leftBarButtonItem = leftNavBarButton
+            }
+            
+            else {
+                if self.view == firstView {
+                    performSegueWithIdentifier("segueToRecords", sender: self)
+                }
+            }
+        }
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "segueToRecords") {
+            // pass data to next view
+            
+            let nextVC = segue.destinationViewController as! RecordsTableViewController
+            
+            if self.view == thirdView {
+                self.saveRecord(NSDate(), location: firstView.locationTextField.text!, symptoms: [], description: thirdView.descriptionTextField.text!)
+            }
+            
+            nextVC.tableView.reloadData()
+            
+        }
+    }
+    
+    func saveRecord(date: NSDate, location: String, symptoms: [Symptom], description: String) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity =  NSEntityDescription.entityForName("Record", inManagedObjectContext:managedContext)
+        
+        let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+    
+        record.setValue(date, forKey: "date")
+        record.setValue(location, forKey: "location")
+        record.setValue("", forKey: "symptoms")
+        record.setValue(description, forKey: "attackDescription")
+        
+        do {
+            try managedContext.save()
+            
+            recordsList.append(record)
+            
+        }
+        
+        catch let error as NSError  {
+            
+            print("Could not save \(error), \(error.userInfo)")
+        
+        }
+    }
+//
 //    @IBAction func updateLocationAction(sender: AnyObject) {
 //        
 //        locationManager = CLLocationManager()
@@ -168,10 +220,5 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
 //            }
 //        })
 //    }
-//    
-//    func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-
 
 }

@@ -21,7 +21,6 @@
 		185ADE931D341A1A00910D08 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185ADE921D341A1A00910D08 /* Record.swift */; };
 		18AAEE671D396BDA00F89517 /* AddRecordView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE661D396BDA00F89517 /* AddRecordView1.swift */; };
 		18AAEE691D3ADBA800F89517 /* AddRecordView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE681D3ADBA800F89517 /* AddRecordView2.swift */; };
-		18AAEE6D1D3ADCC500F89517 /* AddRecordNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE6C1D3ADCC500F89517 /* AddRecordNavigationController.swift */; };
 		18AAEE6F1D3AE7FE00F89517 /* AddRecordView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE6E1D3AE7FE00F89517 /* AddRecordView3.swift */; };
 		F6A89B8F1D382B44003DB910 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B8E1D382B44003DB910 /* RecordViewController.swift */; };
 		F6A89B921D382BA5003DB910 /* View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B901D382BA5003DB910 /* View1.swift */; };
@@ -51,7 +50,6 @@
 		185ADE921D341A1A00910D08 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		18AAEE661D396BDA00F89517 /* AddRecordView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView1.swift; sourceTree = "<group>"; };
 		18AAEE681D3ADBA800F89517 /* AddRecordView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView2.swift; sourceTree = "<group>"; };
-		18AAEE6C1D3ADCC500F89517 /* AddRecordNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordNavigationController.swift; sourceTree = "<group>"; };
 		18AAEE6E1D3AE7FE00F89517 /* AddRecordView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView3.swift; sourceTree = "<group>"; };
 		F6A89B8E1D382B44003DB910 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		F6A89B901D382BA5003DB910 /* View1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View1.swift; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 				18AAEE661D396BDA00F89517 /* AddRecordView1.swift */,
 				18AAEE681D3ADBA800F89517 /* AddRecordView2.swift */,
 				18AAEE6E1D3AE7FE00F89517 /* AddRecordView3.swift */,
-				18AAEE6C1D3ADCC500F89517 /* AddRecordNavigationController.swift */,
 				180F6A5C1D34129A00700D07 /* SecondViewController.swift */,
 				F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */,
 				F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */,
@@ -235,7 +232,6 @@
 				180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */,
 				180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */,
 				18AAEE671D396BDA00F89517 /* AddRecordView1.swift in Sources */,
-				18AAEE6D1D3ADCC500F89517 /* AddRecordNavigationController.swift in Sources */,
 				F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */,
 				F6A89B921D382BA5003DB910 /* View1.swift in Sources */,
 				18AAEE6F1D3AE7FE00F89517 /* AddRecordView3.swift in Sources */,

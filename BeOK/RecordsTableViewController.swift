@@ -10,9 +10,7 @@ import UIKit
 import CoreData
 
 class RecordsTableViewController: UITableViewController {
-    
-//    var recordsList: [Item] = []
-    
+
     var recordsList = [NSManagedObject]()
     
     override func viewDidLoad() {
@@ -73,10 +71,11 @@ class RecordsTableViewController: UITableViewController {
         let fetchRequest = NSFetchRequest(entityName: "Record")
         
         do {
-            let results =
-                try managedContext.executeFetchRequest(fetchRequest)
+            let results = try managedContext.executeFetchRequest(fetchRequest)
             recordsList = results as! [NSManagedObject]
-        } catch let error as NSError {
+        }
+        
+        catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         

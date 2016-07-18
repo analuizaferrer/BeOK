@@ -12,14 +12,12 @@ struct Item
 {
     let date: NSDate?
     let location: String?
-    let triggers: String?
     let symptoms: [Symptom]? = []
     let description: String?
     
-    init(date: NSDate, location: String, triggers: String, symptoms: [Symptom], description: String) {
+    init(date: NSDate, location: String, symptoms: [Symptom], description: String) {
         self.date = date
         self.location = location
-        self.triggers = triggers
         if symptoms.count > 0 {
             for symptom in symptoms {
                 self.symptoms?.append(symptom)
