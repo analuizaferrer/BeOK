@@ -31,12 +31,19 @@ class RecordsTableViewController: UITableViewController {
         
         let thisRecord = recordsList[indexPath.row]
         
-        let dateFormatter: NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
-        let selectedDate: NSString = dateFormatter.stringFromDate(thisRecord.valueForKey("date") as! NSDate)
+        cell.dayLabel.textColor = UIColor(red: 123/255, green: 123/255, blue: 123/255, alpha: 1)
+        let dayFormatter: NSDateFormatter = NSDateFormatter()
+        dayFormatter.dateFormat = "dd"
+        let selectedDay: NSString = dayFormatter.stringFromDate(thisRecord.valueForKey("date") as! NSDate)
+        cell.dayLabel.text = selectedDay as String
         
+        cell.monthLabel.textColor = UIColor(red: 123/255, green: 123/255, blue: 123/255, alpha: 1)
+        let monthFormatter: NSDateFormatter = NSDateFormatter()
+        monthFormatter.dateFormat = "MMM"
+        let selectedMonth: NSString = monthFormatter.stringFromDate(thisRecord.valueForKey("date") as! NSDate)
+        cell.monthLabel.text = selectedMonth as String
         
-        cell.dateLabel.text = selectedDate as String
+        cell.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         cell.descriptionLabel.text = thisRecord.valueForKey("attackDescription") as? String
         
 //        let symptomsCount = thisRecord.symptoms?.count
@@ -89,7 +96,14 @@ class RecordsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let row = indexPath.row
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if  segue.identifier == "segueToDetails" {
+            
+            let detailsVC = segue.destinationViewController as! RecordDetailsViewController
+            detailsVC.record = recordsList[(tableView.indexPathForSelectedRow?.row)!]
+        }
     }
 
 }

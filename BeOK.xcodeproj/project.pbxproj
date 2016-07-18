@@ -24,7 +24,7 @@
 		18AAEE6F1D3AE7FE00F89517 /* AddRecordView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE6E1D3AE7FE00F89517 /* AddRecordView3.swift */; };
 		18AAEE761D3D3FA800F89517 /* Cicadas noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18AAEE741D3D3FA800F89517 /* Cicadas noise.mp3 */; };
 		18AAEE771D3D3FA800F89517 /* Rainforest sounds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18AAEE751D3D3FA800F89517 /* Rainforest sounds.mp3 */; };
-		18AAEE791D3D4D6500F89517 /* RecordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE781D3D4D6500F89517 /* RecordDetailsView.swift */; };
+		18AAEE7B1D3D869600F89517 /* RecordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */; };
 		F6A89B8F1D382B44003DB910 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B8E1D382B44003DB910 /* RecordViewController.swift */; };
 		F6A89B921D382BA5003DB910 /* View1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A89B901D382BA5003DB910 /* View1.swift */; };
 		F6A89B931D382BA5003DB910 /* View1.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A89B911D382BA5003DB910 /* View1.xib */; };
@@ -57,7 +57,7 @@
 		18AAEE6E1D3AE7FE00F89517 /* AddRecordView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView3.swift; sourceTree = "<group>"; };
 		18AAEE741D3D3FA800F89517 /* Cicadas noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cicadas noise.mp3"; sourceTree = "<group>"; };
 		18AAEE751D3D3FA800F89517 /* Rainforest sounds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Rainforest sounds.mp3"; sourceTree = "<group>"; };
-		18AAEE781D3D4D6500F89517 /* RecordDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailsView.swift; sourceTree = "<group>"; };
+		18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailsViewController.swift; sourceTree = "<group>"; };
 		F6A89B8E1D382B44003DB910 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		F6A89B901D382BA5003DB910 /* View1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View1.swift; sourceTree = "<group>"; };
 		F6A89B911D382BA5003DB910 /* View1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View1.xib; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 				180F6A5A1D34129A00700D07 /* FirstViewController.swift */,
 				185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */,
 				185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */,
-				18AAEE781D3D4D6500F89517 /* RecordDetailsView.swift */,
+				18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */,
 				180E365A1D35D93C00B650E1 /* AddRecordViewController.swift */,
 				18AAEE661D396BDA00F89517 /* AddRecordView1.swift */,
 				18AAEE681D3ADBA800F89517 /* AddRecordView2.swift */,
@@ -249,13 +249,13 @@
 				180E367F1D36C90A00B650E1 /* BeOK.xcdatamodeld in Sources */,
 				18AAEE691D3ADBA800F89517 /* AddRecordView2.swift in Sources */,
 				180E365B1D35D93C00B650E1 /* AddRecordViewController.swift in Sources */,
-				18AAEE791D3D4D6500F89517 /* RecordDetailsView.swift in Sources */,
 				185ADE931D341A1A00910D08 /* Record.swift in Sources */,
 				F6A89B8F1D382B44003DB910 /* RecordViewController.swift in Sources */,
 				180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */,
 				180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */,
 				180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */,
 				18AAEE671D396BDA00F89517 /* AddRecordView1.swift in Sources */,
+				18AAEE7B1D3D869600F89517 /* RecordDetailsViewController.swift in Sources */,
 				F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */,
 				F6A89B921D382BA5003DB910 /* View1.swift in Sources */,
 				18AAEE6F1D3AE7FE00F89517 /* AddRecordView3.swift in Sources */,

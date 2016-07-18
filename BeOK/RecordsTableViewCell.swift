@@ -10,7 +10,8 @@ import UIKit
 
 class RecordsTableViewCell: UITableViewCell {
     
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dayLabel: UILabel!
+    @IBOutlet var monthLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var symptomsLabel: UILabel!
     
