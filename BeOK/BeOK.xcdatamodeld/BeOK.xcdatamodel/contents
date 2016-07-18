@@ -3,10 +3,15 @@
     <entity name="Record" syncable="YES">
         <attribute name="attackDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="symptoms" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="symptoms" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Record" syncable="YES"/>
+    </entity>
+    <entity name="Symptom" syncable="YES">
+        <attribute name="symptom" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Record" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Record" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Symptom" positionX="-63" positionY="18" width="128" height="60"/>
     </elements>
 </model>

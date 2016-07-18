@@ -23,6 +23,7 @@ class AddRecordView1: UIView {
     var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
     
     var durationValue = 30
+    var date: NSDate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,6 +34,8 @@ class AddRecordView1: UIView {
         self.dateLabel.textColor = UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1)
         self.addSubview(dateLabel)
         
+        date = NSDate()
+        self.datePicker.addTarget(self, action: #selector(datePickerAction), forControlEvents: .ValueChanged)
         self.addSubview(datePicker)
         
         self.durationLabel.text = "How long did it last?"
@@ -70,6 +73,12 @@ class AddRecordView1: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    internal func datePickerAction(sender: UIDatePicker){
+        
+        date = sender.date
+        
     }
     
     func increaseDurationValue (sender: UIButton) {

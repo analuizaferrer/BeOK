@@ -19,9 +19,9 @@ class AddRecordView3: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         self.descriptionLabel.text = "What went through your head?"
-        self.descriptionLabel.textColor = UIColor(red: 0.67, green: 0.73, blue: 1.56, alpha: 1)
+        self.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(descriptionLabel)
-        self.descriptionTextField.text = "kwlmel"
+        self.descriptionTextField.text = "..."
         self.descriptionTextField.contentVerticalAlignment = .Top
         self.addSubview(descriptionTextField)
         self.pageCounter.image = UIImage(named: "PageCounter3")

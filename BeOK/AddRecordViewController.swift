@@ -19,6 +19,8 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     
     var recordsList = [NSManagedObject]()
     
+    var recordSymptoms: [String]!
+    
     var leftNavBarButton: UIBarButtonItem!
     var rightNavBarButton: UIBarButtonItem!
     
@@ -121,7 +123,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
             let nextVC = segue.destinationViewController as! RecordsTableViewController
             
             if self.view == thirdView {
-                self.saveRecord(NSDate(), location: firstView.locationTextField.text!, symptoms: [], description: thirdView.descriptionTextField.text!)
+                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextField.text!, symptoms: [], description: thirdView.descriptionTextField.text!)
             }
             
             nextVC.tableView.reloadData()
@@ -129,7 +131,9 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func saveRecord(date: NSDate, location: String, symptoms: [Symptom], description: String) {
+    func saveRecord(date: NSDate, duration: Int, location: String, symptoms: [Symptom], description: String) {
+        
+        loadSymptomsArray(secondView.symptoms, symptomsBool: secondView.checked, other: secondView.otherSymptomTextField.text!)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -139,6 +143,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
     
         record.setValue(date, forKey: "date")
+        record.setValue(duration, forKey: "duration")
         record.setValue(location, forKey: "location")
         record.setValue("", forKey: "symptoms")
         record.setValue(description, forKey: "attackDescription")
@@ -156,6 +161,26 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         
         }
     }
+    
+    func loadSymptomsArray (symptomsNames: [String], symptomsBool: [Bool], other: String) {
+        
+        var i = 0
+        
+        for symptom in symptomsBool {
+            
+            if symptom == true {
+                recordSymptoms.append(symptomsNames[i])
+            }
+            
+            i += 1
+        }
+        
+        if other != "Other" {
+            recordSymptoms.append(other)
+        }
+        
+    }
+
 //
 //    @IBAction func updateLocationAction(sender: AnyObject) {
 //        

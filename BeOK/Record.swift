@@ -12,10 +12,10 @@ struct Item
 {
     let date: NSDate?
     let location: String?
-    let symptoms: [Symptom]? = []
+    let symptoms: [String]? = []
     let description: String?
     
-    init(date: NSDate, location: String, symptoms: [Symptom], description: String) {
+    init(date: NSDate, location: String, symptoms: [String], description: String) {
         self.date = date
         self.location = location
         if symptoms.count > 0 {
@@ -29,16 +29,16 @@ struct Item
     
 }
 
-enum Symptom {
-    case Heart(Bool)
-    case Sweat(Bool)
-    case Shake(Bool)
-    case Breath(Bool)
-    case Choke(Bool)
-    case Chest(Bool)
-    case Stomach(Bool)
-    case Dizzy(Bool)
-    case Numb(Bool)
-    case Chill(Bool)
-    case Other(String)
+enum Symptom: String {
+    case Heart
+    case Sweat
+    case Shake
+    case Breath
+    case Choke
+    case Chest
+    case Stomach
+    case Dizzy
+    case Numb
+    case Chill
+    case Other
 }

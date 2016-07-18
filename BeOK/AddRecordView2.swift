@@ -18,6 +18,8 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var symptoms: [String] = ["Hyperventilation", "Dizziness", "Nausea", "Chest Pain", "Accelerated Heartbeat"]
     
+    var recordSymptoms: [String]!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

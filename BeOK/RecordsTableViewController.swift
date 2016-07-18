@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class RecordsTableViewController: UITableViewController {
-
+    
     var recordsList = [NSManagedObject]()
     
     override func viewDidLoad() {
@@ -26,12 +26,17 @@ class RecordsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordsTableViewCell
         
         let thisRecord = recordsList[indexPath.row]
         
-        cell.dateLabel.text = "No date yet"
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        let selectedDate: NSString = dateFormatter.stringFromDate(thisRecord.valueForKey("date") as! NSDate)
+        
+        
+        cell.dateLabel.text = selectedDate as String
         cell.descriptionLabel.text = thisRecord.valueForKey("attackDescription") as? String
         
 //        let symptomsCount = thisRecord.symptoms?.count
@@ -81,4 +86,11 @@ class RecordsTableViewController: UITableViewController {
         
         self.tableView.reloadData()
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+    }
+
 }
