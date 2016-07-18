@@ -53,6 +53,8 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.symptomsTableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+       
+        UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         
         cell.textLabel?.text = self.symptoms[indexPath.row]
         
@@ -66,6 +68,7 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = symptomsTableView.cellForRowAtIndexPath(indexPath) {
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
             if cell.accessoryType == .Checkmark {
                 cell.accessoryType = .None
                 checked[indexPath.row] = false
