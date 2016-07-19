@@ -124,8 +124,8 @@
 				180F6A5A1D34129A00700D07 /* FirstViewController.swift */,
 				F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */,
 				18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */,
-				185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */,
 				185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */,
+				185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */,
 				F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */,
 				180F6A5C1D34129A00700D07 /* SecondViewController.swift */,
 				F6E313281D3D26F80006374B /* SoundsTableViewController.swift */,
@@ -177,6 +177,7 @@
 				TargetAttributes = {
 					180F6A541D34129A00700D07 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 5BS7QB5JFF;
 					};
 				};
 			};
@@ -345,10 +346,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeOK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AnaLuizaFerrer.BeOK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -356,10 +360,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeOK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AnaLuizaFerrer.BeOK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

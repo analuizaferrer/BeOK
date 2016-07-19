@@ -123,7 +123,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
             let nextVC = segue.destinationViewController as! RecordsTableViewController
             
             if self.view == thirdView {
-                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextField.text!, description: thirdView.descriptionTextField.text!)
+                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextField.text!, description: thirdView.descriptionTextField.text!, otherSymptom: secondView.otherSymptomTextField.text!)
             }
             
             nextVC.tableView.reloadData()
@@ -131,15 +131,22 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func saveRecord(date: NSDate, duration: Int, location: String, description: String) {
-        
-        loadSymptomsArray(secondView.symptomsList, symptomsBool: secondView.checked, other: secondView.otherSymptomTextField.text!)
+    func saveRecord(date: NSDate, duration: Int, location: String, description: String, otherSymptom: String) {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         let recordEntity =  NSEntityDescription.entityForName("Record", inManagedObjectContext: managedContext)
         let record = NSManagedObject(entity: recordEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        if otherSymptom != "" {
+         
+            let symptomEntity = NSEntityDescription.entityForName("Symptom", inManagedObjectContext: managedContext)
+            let symptom = NSManagedObject(entity: symptomEntity!, insertIntoManagedObjectContext: managedContext)
+            
+            symptom.setValue(otherSymptom, forKey: "symptom")
+            
+        }
     
         record.setValue(date, forKey: "date")
         record.setValue(duration, forKey: "duration")
@@ -153,19 +160,9 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
             record.setValue("No description", forKey: "attackDescription")
         }
         
-        let symptomEntity = NSEntityDescription.entityForName("Symptom", inManagedObjectContext: managedContext)
-        let relationship = record.mutableSetValueForKey("symptoms")
-        
-        for i in recordSymptoms {
-            let newSymptom = NSManagedObject(entity: symptomEntity!, insertIntoManagedObjectContext:managedContext)
-            newSymptom.setValue(i, forKey: "symptom")
-            relationship.addObject(newSymptom)
-        }
-        
         do {
-            try managedContext.save()
             
-            recordsList.append(record)
+            try managedContext.save()
             
         }
         
@@ -176,27 +173,6 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func loadSymptomsArray (symptomsNames: [String], symptomsBool: [Bool], other: String) {
-        
-        var i = 0
-        
-        self.recordSymptoms = []
-        
-        for symptom in symptomsBool {
-            
-            if symptom == true {
-                recordSymptoms.append(symptomsNames[i])
-            }
-            
-            i += 1
-        }
-        
-        if other != "" {
-            recordSymptoms.append(other)
-        }
-        
-    }
-
 //
 //    @IBAction func updateLocationAction(sender: AnyObject) {
 //        

@@ -13,15 +13,56 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let defaultSymptomsList: [String] = ["Accelerated Heartbeat", "Sweat", "Shaking/Trembling", "Hyperventilation", "Choking", "Chest Pain", "Nausea", "Dizziness", "Derealization/Depersonalization", "Loss of Control", "Fear of Death", "Numbness", "Chills"]
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         UITabBar.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
+        
+        let hasLaunchedKey = "HasLaunched"
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let hasLaunched = defaults.boolForKey(hasLaunchedKey)
+        
+        if !hasLaunched {
+            
+            //Executed only on first run
+            
+            defaults.setBool(true, forKey: hasLaunchedKey)
+            
+            for i in defaultSymptomsList {
+                saveDefaultSymptomsInCoreData(i)
+            }
+        }
+        
+        
 
         return true
     }
+    
+    func saveDefaultSymptomsInCoreData(symptom: String) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let symptomEntity =  NSEntityDescription.entityForName("Symptom", inManagedObjectContext: managedContext)
+        let newSymptom = NSManagedObject(entity: symptomEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        newSymptom.setValue(symptom, forKey: "symptom")
+        
+        do {
+            try managedContext.save()
+        }
+            
+        catch let error as NSError  {
+            
+            print("Could not save \(error), \(error.userInfo)")
+            
+        }
+    }
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

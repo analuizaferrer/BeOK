@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,7 +17,9 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     var symptomsTableView = UITableView(frame: CGRectMake(15, 172, 338, 410))
     var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
     
-    var symptomsList: [String] = ["Accelerated Heartbeat", "Sweat", "Shaking/Trembling", "Hyperventilation", "Choking", "Chest Pain", "Nausea", "Dizziness", "Derealization/Depersonalization", "Loss of Control", "Fear of Death", "Numbness", "Chills"]
+    var symptomsList = [NSManagedObject]()
+    
+    var checked: [Bool] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,25 +41,54 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
         self.pageCounter.image = UIImage(named: "PageCounter2")
         self.addSubview(pageCounter)
         
+        loadSymptomsList()
+        
+        loadCheckedArray()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func loadSymptomsList () {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Symptom")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            symptomsList = results as! [NSManagedObject]
+        }
+            
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.symptomsList.count
     }
     
-    var checked: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false]
-    
+    func loadCheckedArray () {
+        var i = 0
+        while i < symptomsList.count {
+            checked.append(false)
+            i += 1
+        }
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.symptomsTableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
        
         UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         
-        cell.textLabel?.text = self.symptomsList[indexPath.row]
+        
+        let thisSymptom = symptomsList[indexPath.row]
+        cell.textLabel?.text = thisSymptom.valueForKey("symptom") as? String
         
         if !checked[indexPath.row] {
             cell.accessoryType = .None
