@@ -12,6 +12,7 @@ import CoreData
 class RecordsTableViewController: UITableViewController {
     
     var recordsList = [NSManagedObject]()
+    var symptomsList = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,14 +77,24 @@ class RecordsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
         let managedContext = appDelegate.managedObjectContext
         
-        let fetchRequest = NSFetchRequest(entityName: "Record")
+        let fetchRequestRecord = NSFetchRequest(entityName: "Record")
+        let fetchRequestSymptom = NSFetchRequest(entityName: "Symptom")
+        let predicate = NSPredicate(format: "%K == %@", "symptoms.symptom", "Bart")
+
+        
         
         do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            recordsList = results as! [NSManagedObject]
+            let resultsRecord = try managedContext.executeFetchRequest(fetchRequestRecord)
+            recordsList = resultsRecord as! [NSManagedObject]
+            
+            let resultsSymptom = try managedContext.executeFetchRequest(fetchRequestSymptom)
+            for managedObject in resultsSymptom {
+                if let symptom = managedObject.valueForKey("symptom") {
+                    print("AQUUUUUUUUUI: \(symptom)")
+                }
+            }
         }
         
         catch let error as NSError {

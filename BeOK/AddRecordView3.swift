@@ -21,13 +21,13 @@ class AddRecordView3: UIView {
         self.descriptionLabel.text = "What went through your head?"
         self.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(descriptionLabel)
-        self.descriptionTextField.placeholder = "Write up any relevant information"
+        self.descriptionTextField.placeholder = "Write any relevant information"
         self.descriptionTextField.contentVerticalAlignment = .Top
         self.addSubview(descriptionTextField)
         self.pageCounter.image = UIImage(named: "PageCounter3")
         self.addSubview(pageCounter)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.addGestureRecognizer(tap)
         
     }

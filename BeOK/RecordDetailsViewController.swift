@@ -33,7 +33,7 @@ class RecordDetailsViewController: UIViewController {
         self.view.addSubview(dateLabel)
         
         let locationLabel = UILabel(frame: CGRectMake(15,150.5,400,20))
-        locationLabel.text = record.valueForKey("location") as! String
+        locationLabel.text = record.valueForKey("location") as? String
         self.view.addSubview(locationLabel)
         
         let symptomsLabel = UILabel(frame: CGRectMake(15.59,259,400,18))
@@ -47,7 +47,7 @@ class RecordDetailsViewController: UIViewController {
         self.view.addSubview(descriptionHeaderLabel)
         
         let descriptionBodyLabel = UILabel(frame: CGRectMake(15.2,395,299,80))
-        descriptionBodyLabel.text = record.valueForKey("attackDescription") as! String
+        descriptionBodyLabel.text = record.valueForKey("attackDescription") as? String
         descriptionBodyLabel.numberOfLines = 3
         descriptionBodyLabel.sizeToFit()
         self.view.addSubview(descriptionBodyLabel)

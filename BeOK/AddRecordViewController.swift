@@ -144,15 +144,23 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         record.setValue(date, forKey: "date")
         record.setValue(duration, forKey: "duration")
         record.setValue(location, forKey: "location")
-        record.setValue(description, forKey: "attackDescription")
+        
+        if description != "" {
+           record.setValue(description, forKey: "attackDescription")
+        }
+        
+        else {
+            record.setValue("No description", forKey: "attackDescription")
+        }
         
         let symptomEntity = NSEntityDescription.entityForName("Symptom", inManagedObjectContext: managedContext)
-        let newSymptom = NSManagedObject(entity: symptomEntity!, insertIntoManagedObjectContext: managedContext)
+        let relationship = record.mutableSetValueForKey("symptoms")
         
-        newSymptom.setValue("Jim", forKey: "symptom")
-        
-        let symptomsRecordRelationship = record.mutableSetValueForKey("symptoms")
-        symptomsRecordRelationship.addObject(newSymptom)
+        for i in recordSymptoms {
+            let newSymptom = NSManagedObject(entity: symptomEntity!, insertIntoManagedObjectContext:managedContext)
+            newSymptom.setValue(i, forKey: "symptom")
+            relationship.addObject(newSymptom)
+        }
         
         do {
             try managedContext.save()
@@ -183,7 +191,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
             i += 1
         }
         
-        if other != "Other" {
+        if other != "" {
             recordSymptoms.append(other)
         }
         

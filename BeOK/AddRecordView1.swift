@@ -90,6 +90,9 @@ class AddRecordView1: UIView {
     
     func decreaseDurationValue (sender: UIButton) {
         durationValue -= 5
+        if durationValue < 0 {
+            durationValue = 0
+        }
         durationRead.text = "\(durationValue) min"
     }
     

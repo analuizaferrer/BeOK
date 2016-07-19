@@ -13,10 +13,10 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var symptomsLabel = UILabel(frame: CGRectMake(15,91,400,18))
     var otherSymptomTextField = UITextField(frame: CGRectMake(50,133,300,24))
-    var symptomsTableView = UITableView(frame: CGRectMake(15, 172, 338, 300))
+    var symptomsTableView = UITableView(frame: CGRectMake(15, 172, 338, 410))
     var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
     
-    var symptomsList: [String] = ["Hyperventilation", "Dizziness", "Nausea", "Chest Pain", "Accelerated Heartbeat"]
+    var symptomsList: [String] = ["Accelerated Heartbeat", "Sweat", "Shaking/Trembling", "Hyperventilation", "Choking", "Chest Pain", "Nausea", "Dizziness", "Derealization/Depersonalization", "Loss of Control", "Fear of Death", "Numbness", "Chills"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,7 +48,7 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
         return self.symptomsList.count
     }
     
-    var checked: [Bool] = [false, false, false, false, false]
+    var checked: [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
