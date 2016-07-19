@@ -10,91 +10,86 @@ import UIKit
 import AVFoundation
 
 class SoundsTableViewController: UITableViewController {
-  
-  var sounds: [String] = []
-  
-  var urls: [NSURL] = []
-  
-  var checked: [Bool] = []
-  
-  let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
-  let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
-  
-  let lakeURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("lake", ofType: "wav")!)
-  //let chuvaURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("chuva", ofType: "wav")!)
-  let wavesURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("waves", ofType: "wav")!)
-  
-  
-  var audioPlayer = AVAudioPlayer()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
     
-    sounds += ["Rainforest sounds", "Cicadas noise", "Lake", "Waves"]
-    urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
-    checked += [false, false, false, false, false]
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-  
-  // MARK: - Table view data source
-  
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
-    return sounds.count
-  }
-  
-  
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+    var sounds: [String] = []
     
-    UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
+    var urls: [NSURL] = []
     
-    cell.textLabel?.text = sounds[indexPath.row]
+    var checked: [Bool] = []
     
-    if !checked[indexPath.row] {
-      cell.accessoryType = .None
-    } else if checked[indexPath.row] {
-      cell.accessoryType = .Checkmark
+    let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
+    let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
+    
+    let lakeURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("lake", ofType: "wav")!)
+    //let chuvaURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("chuva", ofType: "wav")!)
+    let wavesURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("waves", ofType: "wav")!)
+    
+    
+    var audioPlayer = AVAudioPlayer()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        sounds += ["Rainforest sounds", "Cicadas noise", "Lake", "Waves"]
+        urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
+        checked += [false, false, false, false]
     }
     
-    return cell
-  }
-  
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-      do {
-        audioPlayer = try AVAudioPlayer(contentsOfURL: urls[indexPath.row], fileTypeHint: nil)
-        audioPlayer.prepareToPlay()
-        audioPlayer.play()
-      }
-      catch let error as NSError {
-        print(error.description)
-      }
-      
-      cell.selectionStyle = UITableViewCellSelectionStyle.None
-      
-      if cell.accessoryType == .None {
+    // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return sounds.count
+    }
+    
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        cell.accessoryType = .Checkmark
-        checked[indexPath.row] = true
+        UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         
-        var i = 0
-        while i < checked.count {
-          if i != indexPath.row {
-            checked[i] = false
-          }
-          i += 1
+        cell.textLabel?.text = sounds[indexPath.row]
+        
+        if !checked[indexPath.row] {
+            print("entrou aqui 1")
+            cell.accessoryType = .None
+        } else if checked[indexPath.row] {
+            cell.accessoryType = .Checkmark
         }
-      }
+        
+        return cell
     }
-  }
-  
-  override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
-  }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOfURL: urls[indexPath.row], fileTypeHint: nil)
+                audioPlayer.prepareToPlay()
+                audioPlayer.play()
+            }
+            catch let error as NSError {
+                print(error.description)
+            }
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
+            if cell.accessoryType == .None {
+                print("entrou aqui 2")
+                cell.accessoryType = .Checkmark
+                checked[indexPath.row] = true
+                
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
+        checked[indexPath.row] = false
+    }
 }

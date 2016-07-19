@@ -16,7 +16,7 @@ class FirstViewController: UIViewController {
   @IBOutlet weak var centerButton: UIButton!
   @IBOutlet weak var outButton: UIButton!
   
-  var audioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
+  var audioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("waves", ofType: "wav")!)
   
   var audioPlayer = AVAudioPlayer()
   

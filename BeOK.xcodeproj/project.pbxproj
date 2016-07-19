@@ -29,7 +29,7 @@
 		EF0FB97E1D3EBA40000A6E60 /* waves.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF0FB97B1D3EBA40000A6E60 /* waves.wav */; };
 		F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */; };
 		F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */; };
-		F6E313291D3D26F80006374B /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E313281D3D26F80006374B /* SoundsTableViewController.swift */; };
+		F6E98A751D3ED8C300281D56 /* SoundsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E98A741D3ED8C300281D56 /* SoundsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +57,7 @@
 		EF0FB97B1D3EBA40000A6E60 /* waves.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = waves.wav; sourceTree = "<group>"; };
 		F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
-		F6E313281D3D26F80006374B /* SoundsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
+		F6E98A741D3ED8C300281D56 /* SoundsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,7 @@
 				185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */,
 				F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */,
 				180F6A5C1D34129A00700D07 /* SecondViewController.swift */,
-				F6E313281D3D26F80006374B /* SoundsTableViewController.swift */,
+				F6E98A741D3ED8C300281D56 /* SoundsTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -228,8 +228,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				185ADE8F1D34195400910D08 /* RecordsTableViewController.swift in Sources */,
+				F6E98A751D3ED8C300281D56 /* SoundsTableViewController.swift in Sources */,
 				185ADE911D3419DE00910D08 /* RecordsTableViewCell.swift in Sources */,
-				F6E313291D3D26F80006374B /* SoundsTableViewController.swift in Sources */,
 				180E367F1D36C90A00B650E1 /* BeOK.xcdatamodeld in Sources */,
 				18AAEE691D3ADBA800F89517 /* AddRecordView2.swift in Sources */,
 				180E365B1D35D93C00B650E1 /* AddRecordViewController.swift in Sources */,

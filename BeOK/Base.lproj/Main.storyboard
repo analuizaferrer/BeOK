@@ -39,9 +39,9 @@
                                     <color key="titleColor" red="0.2627450980392157" green="0.25490196078431371" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coping message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0X-Xz-9Gk">
-                                <rect key="frame" x="20" y="50" width="560" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coping message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0X-Xz-9Gk">
+                                <rect key="frame" x="20" y="80" width="560" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -61,7 +61,7 @@
                             <constraint firstAttribute="trailing" secondItem="HDO-3Y-qt0" secondAttribute="trailing" id="ftY-Eq-OzO"/>
                             <constraint firstItem="DZN-lO-4Iz" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="mLQ-fO-hL0"/>
                             <constraint firstItem="J1J-br-3bq" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="pAC-8c-IH8"/>
-                            <constraint firstItem="g0X-Xz-9Gk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="30" id="rCi-s5-cKX"/>
+                            <constraint firstItem="g0X-Xz-9Gk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="60" id="rCi-s5-cKX"/>
                             <constraint firstItem="HDO-3Y-qt0" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="wZ4-Vl-dPQ"/>
                             <constraint firstItem="oE2-AV-JbI" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="wi0-Fe-hl4"/>
                             <constraint firstItem="DZN-lO-4Iz" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="wja-A1-fup"/>
@@ -369,7 +369,7 @@
                                         <rect key="frame" x="0.0" y="64" width="600" height="422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qup-9t-6Gf" id="3tS-zj-zSO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="421.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sC4-HN-sut">
