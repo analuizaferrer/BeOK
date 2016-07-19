@@ -16,16 +16,11 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var outButton: UIButton!
     
-    
-    @IBOutlet weak var videoView: UIView!
-    
-    
     var audioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
     
     var audioPlayer = AVAudioPlayer()
     
     var breathingTimer = NSTimer()
-    
     
     @IBOutlet weak var breathingCircle: UIImageView!
     
@@ -103,8 +98,7 @@ class FirstViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         audioPlayer.stop()
-      
-      breathingTimer.invalidate()
+        breathingTimer.invalidate()
     }
     
     
@@ -112,10 +106,5 @@ class FirstViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //    override func viewDidLayoutSubviews() {
-    //        playerLayer.frame = videoView.bounds
-    //    }
-    
 }
 

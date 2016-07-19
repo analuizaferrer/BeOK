@@ -21,8 +21,10 @@ class SettingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func prepareForUnwindToSettings(segue: UIStoryboardSegue) {
+    }
+    
     // MARK: - Table view data source
-
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
