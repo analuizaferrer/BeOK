@@ -45,7 +45,8 @@ class FirstViewController: UIViewController {
         let smaller:CGAffineTransform = CGAffineTransformMakeScale(0.7, 0.7)
         
         let center:CGPoint = breathingCircle.center
-        
+      
+      
         UIView.animateWithDuration(4.0, delay: 0.0, options: [], animations: {
             
             self.centerButton.hidden = false
@@ -102,6 +103,8 @@ class FirstViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         audioPlayer.stop()
+      
+      breathingTimer.invalidate()
     }
     
     
