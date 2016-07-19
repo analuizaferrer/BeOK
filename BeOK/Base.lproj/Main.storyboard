@@ -73,7 +73,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Breathe" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Breathe" image="breathe" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="breathingCircle" destination="oE2-AV-JbI" id="RsQ-xQ-BL0"/>
                         <outlet property="centerButton" destination="DZN-lO-4Iz" id="itq-8V-n4t"/>
@@ -386,7 +386,7 @@
         <scene sceneID="rrC-z3-JdH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E8b-Jn-hoa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Records" id="vyy-65-wjp"/>
+                    <tabBarItem key="tabBarItem" title="Records" image="records" id="vyy-65-wjp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BM3-DD-n93">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -409,7 +409,7 @@
         <scene sceneID="oKS-2R-Mym">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Y3l-eF-z2u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="QbK-Ng-Zft"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="QbK-Ng-Zft"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JdO-gg-xoY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -445,10 +445,12 @@
     </scenes>
     <resources>
         <image name="FundoGradiente" width="375" height="667"/>
+        <image name="breathe" width="20" height="20"/>
         <image name="circuloRespiracao" width="126" height="126"/>
-        <image name="first" width="30" height="30"/>
         <image name="heartBig" width="123" height="110"/>
         <image name="info" width="110" height="110"/>
+        <image name="records" width="24" height="20"/>
+        <image name="settings" width="20" height="20"/>
         <image name="soundBig" width="90" height="109"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
