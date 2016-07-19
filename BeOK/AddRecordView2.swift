@@ -78,5 +78,4 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
             }
         }    
     }
-
 }
