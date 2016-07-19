@@ -38,6 +38,7 @@ class AddRecordView1: UIView {
         
         date = NSDate()
         self.datePicker.addTarget(self, action: #selector(datePickerAction), forControlEvents: .ValueChanged)
+        self.datePicker.maximumDate = NSDate()
         self.addSubview(datePicker)
         
         self.durationLabel.text = "How long did it last?"
