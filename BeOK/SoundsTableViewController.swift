@@ -15,7 +15,7 @@ class SoundsTableViewController: UITableViewController {
     
     var urls: [NSURL] = []
     
-    var checked: [Bool] = [true, false]
+    var checked: [Bool] = []
     
     let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
     let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
@@ -25,13 +25,9 @@ class SoundsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         sounds += ["Rainforest sounds", "Cicadas noise"]
         urls += [rainforestURL, cicadasURL]
+        checked += [false, false]
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,13 +73,23 @@ class SoundsTableViewController: UITableViewController {
             
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             
-            if cell.accessoryType == .Checkmark {
-                cell.accessoryType = .None
-                checked[indexPath.row] = false
-            } else {
+            if cell.accessoryType == .None {
+               
                 cell.accessoryType = .Checkmark
                 checked[indexPath.row] = true
+               
+                var i = 0
+                while i < checked.count {
+                    if i != indexPath.row {
+                        checked[i] = false
+                    }
+                    i += 1
+                }
             }
         }
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
     }
 }
