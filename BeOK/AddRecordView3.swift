@@ -13,7 +13,7 @@ class AddRecordView3: UIView {
     
     var descriptionLabel = UILabel(frame: CGRectMake(14.53,91,400,18))
     var descriptionTextField = UITextField(frame: CGRectMake(14.53,121,327.55,200))
-    var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
+    var pageCounter = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +24,9 @@ class AddRecordView3: UIView {
         self.descriptionTextField.placeholder = "Write any relevant information"
         self.descriptionTextField.contentVerticalAlignment = .Top
         self.addSubview(descriptionTextField)
+        
+        pageCounter = UIImageView(frame: CGRectMake(self.frame.midX - 65.5, self.frame.height - 39, 131, 26))
+        
         self.pageCounter.image = UIImage(named: "PageCounter3")
         self.addSubview(pageCounter)
         

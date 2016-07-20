@@ -28,7 +28,7 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
     var locationLabel = UILabel(frame: CGRectMake(15,400,200,18))
     var locationTextField = UITextField(frame: CGRectMake(15,433,350,20))
     var getLocationButton = UIButton(frame: CGRectMake(170,400,200,18))
-    var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
+    var pageCounter = UIImageView()
   
     var durationValue = 30
     var date: NSDate!
@@ -53,11 +53,14 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
         
         self.backgroundColor = UIColor.whiteColor()
         
+        pageCounter = UIImageView(frame: CGRectMake(self.frame.midX - 65.5, self.frame.height - 39, 131, 26))
+        
         self.dateLabel.text = "When was the panic attack?"
         self.dateLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(dateLabel)
         
         date = NSDate()
+        self.datePicker.frame = CGRectMake(0, 129, self.frame.width, 146)
         self.datePicker.addTarget(self, action: #selector(datePickerAction), forControlEvents: .ValueChanged)
         self.datePicker.maximumDate = NSDate()
         self.addSubview(datePicker)

@@ -16,8 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let defaultSymptomsList: [String] = ["Accelerated Heartbeat", "Sweat", "Shaking/Trembling", "Hyperventilation", "Choking", "Chest Pain", "Nausea", "Dizziness", "Derealization/Depersonalization", "Loss of Control", "Fear of Death", "Numbness", "Chills"]
 
-    let defaultCopingMessages: [String] = ["You're gonna be okay.", "You can get through this.", "I am proud of you. Good job.", "Concentrate on your breathing. Stay in the present.", "It's not the place that is bothering you; it's the thought.", "What you are feeling is scary, but it is not dangerous."]
+    let defaultCopingMessages: [String] = ["You're gonna be okay.", "You can get through this.", "I am proud of you. Good job.", "Concentrate on your breathing.", "Stay in the present.", "It's not the place that is bothering you; it's the thought.", "What you are feeling is scary, but it is not dangerous.", "Look around: everything is just fine.", "Pay attention to your breathing."]
 
+    let defaultSound: String = "Rainforest sounds"
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
@@ -40,9 +42,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for i in defaultCopingMessages {
                 saveDefaultMessagesInCoreData(i)
             }
+            
+            saveDefaultSoundInCoreData(defaultSound)
         }
 
         return true
+    }
+    
+    func saveDefaultSoundInCoreData(sound: String) {
+       
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let soundEntity =  NSEntityDescription.entityForName("Sound", inManagedObjectContext: managedContext)
+        let newSound = NSManagedObject(entity: soundEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        newSound.setValue(sound, forKey: "sound")
+        
+        do {
+            try managedContext.save()
+        }
+        catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
     func saveDefaultMessagesInCoreData(message: String) {

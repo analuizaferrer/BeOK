@@ -14,8 +14,9 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var symptomsLabel = UILabel(frame: CGRectMake(15,91,400,18))
     var otherSymptomTextField = UITextField(frame: CGRectMake(50,133,300,24))
-    var symptomsTableView = UITableView(frame: CGRectMake(15, 172, 338, 410))
-    var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
+    var symptomsTableView = UITableView()
+    var pageCounter = UIImageView()
+    
     
     var symptomsList = [NSManagedObject]()
     
@@ -25,6 +26,9 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.whiteColor()
+        
+        symptomsTableView.frame = CGRectMake(0, 133, self.frame.width, 400)
+        pageCounter = UIImageView(frame: CGRectMake(self.frame.midX - 65.5, self.frame.height - 39, 131, 26))
         
         self.symptomsLabel.text = "What symptoms did you experience?"
         self.symptomsLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
