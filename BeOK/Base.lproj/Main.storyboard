@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYk-gt-9Gm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2374" y="1095"/>
+            <point key="canvasLocation" x="2366" y="1087"/>
         </scene>
         <!--New Record-->
         <scene sceneID="heR-cE-BWs">
@@ -344,7 +344,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RlU-L2-53b">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="addMessage:" destination="g6t-AX-gmi" id="oNk-ny-l1O"/>
                                 <segue destination="5oO-d0-q6a" kind="presentation" id="6Qc-1J-OIY"/>
                             </connections>
                         </barButtonItem>
@@ -352,62 +351,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gY2-SS-xU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="1553"/>
-        </scene>
-        <!--Add coping message-->
-        <scene sceneID="vyO-Hm-zoM">
-            <objects>
-                <tableViewController id="hiz-7i-9MU" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ipq-GB-fQc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="jXn-zq-okW">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="422" id="Qup-9t-6Gf">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qup-9t-6Gf" id="3tS-zj-zSO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="421.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sC4-HN-sut">
-                                                    <rect key="frame" x="8" y="8" width="584" height="414"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="sC4-HN-sut" firstAttribute="top" secondItem="3tS-zj-zSO" secondAttribute="topMargin" id="9Gn-JG-Jgk"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="sC4-HN-sut" secondAttribute="bottom" constant="-8.5" id="Qlk-cG-2ae"/>
-                                                <constraint firstItem="sC4-HN-sut" firstAttribute="trailing" secondItem="3tS-zj-zSO" secondAttribute="trailingMargin" id="slS-E5-5cg"/>
-                                                <constraint firstItem="sC4-HN-sut" firstAttribute="leading" secondItem="3tS-zj-zSO" secondAttribute="leadingMargin" id="yYG-55-6M1"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="hiz-7i-9MU" id="4BF-bB-yjT"/>
-                            <outlet property="delegate" destination="hiz-7i-9MU" id="1Yr-0a-TPQ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Add coping message" id="1dd-Sb-d27">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="f13-Q9-v3E"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gCM-jC-jqK">
-                            <connections>
-                                <segue destination="tNL-HT-ctu" kind="unwind" unwindAction="prepareForUnwindToSettings:" id="eBl-1H-wnQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Q9-2f-FTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="tNL-HT-ctu" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2278" y="1553"/>
+            <point key="canvasLocation" x="812" y="1857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RFg-hO-csN">
@@ -418,12 +362,62 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="hiz-7i-9MU" kind="relationship" relationship="rootViewController" id="IGR-sS-SDa"/>
+                        <segue destination="FSm-oN-0cS" kind="relationship" relationship="rootViewController" id="q8y-qv-si0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPe-ds-goe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1458" y="1553"/>
+            <point key="canvasLocation" x="1458" y="1857"/>
+        </scene>
+        <!--Add coping message-->
+        <scene sceneID="Lld-hj-ytD">
+            <objects>
+                <viewController id="FSm-oN-0cS" customClass="AddMessageViewController" customModule="BeOK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nca-Sf-rfs"/>
+                        <viewControllerLayoutGuide type="bottom" id="w4c-Oj-93b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hLw-Cs-TIb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyc-AS-r2j">
+                                <rect key="frame" x="12" y="72" width="577" height="513"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="w4c-Oj-93b" firstAttribute="top" secondItem="jyc-AS-r2j" secondAttribute="bottom" constant="15" id="62D-uI-SqH"/>
+                            <constraint firstItem="jyc-AS-r2j" firstAttribute="top" secondItem="nca-Sf-rfs" secondAttribute="bottom" constant="8" symbolic="YES" id="CY8-qt-gty"/>
+                            <constraint firstItem="jyc-AS-r2j" firstAttribute="centerX" secondItem="hLw-Cs-TIb" secondAttribute="centerX" id="CbD-hB-EnI"/>
+                            <constraint firstItem="jyc-AS-r2j" firstAttribute="leading" secondItem="hLw-Cs-TIb" secondAttribute="leadingMargin" constant="-8" id="Ukd-Oa-oZ9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add coping message" id="aoQ-hV-K1K">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="y8u-NT-vpT">
+                            <connections>
+                                <action selector="cancel:" destination="FSm-oN-0cS" id="lXH-IM-2yO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="IaI-mw-54a">
+                            <connections>
+                                <action selector="done:" destination="FSm-oN-0cS" id="PL5-WM-vQ8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newMessage" destination="jyc-AS-r2j" id="9fB-pE-4qo"/>
+                        <segue destination="AFo-Tp-rDC" kind="unwind" identifier="backToMessages" unwindAction="prepareForUnwindToMessages:" id="buG-6H-IwF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zBK-6a-uoh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AFo-Tp-rDC" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2096" y="1857"/>
         </scene>
         <!--Sounds-->
         <scene sceneID="GBR-eD-edX">
@@ -441,6 +435,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="tintColor" red="0.2627450980392157" green="0.28627450980392155" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -452,7 +447,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIc-0f-IUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="1553"/>
+            <point key="canvasLocation" x="0.0" y="1857"/>
         </scene>
         <!--Records-->
         <scene sceneID="rrC-z3-JdH">

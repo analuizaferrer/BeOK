@@ -20,9 +20,6 @@ class SettingsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func prepareForUnwindToSettings(segue: UIStoryboardSegue) {
-    }
     
     // MARK: - Table view data source
     

@@ -15,7 +15,7 @@ class RecordsTableViewController: UITableViewController {
     var symptomsList = [NSManagedObject]()
     var recordSymptomList = [NSManagedObject]()
     
-    var symptomsCountArray: [Int] = []
+    var symptomsCountArray: [Int]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,7 @@ class RecordsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordsTableViewCell
         
         let thisRecord = recordsList[indexPath.row]
+        let thisSymptomsCount = symptomsCountArray[indexPath.row]
         
         cell.dayLabel.textColor = UIColor(red: 123/255, green: 123/255, blue: 123/255, alpha: 1)
         let dayFormatter: NSDateFormatter = NSDateFormatter()
@@ -56,21 +57,19 @@ class RecordsTableViewController: UITableViewController {
         cell.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         cell.descriptionLabel.text = thisRecord.valueForKey("attackDescription") as? String
         
-//        let thisSymptomsCount = symptomsCountArray[indexPath.row]
-//        
-//        if thisSymptomsCount > 1 {
-//            cell.symptomsLabel.text = "\(thisSymptomsCount) symptoms"
-//        }
-//        
-//        else {
-//            if thisSymptomsCount == 1 {
-//                cell.symptomsLabel.text = "1 symptom"
-//            }
-//            
-//            else {
-//                cell.symptomsLabel.text = "No symptoms"
-//            }
-//        }
+        if thisSymptomsCount > 1 {
+            cell.symptomsLabel.text = "\(thisSymptomsCount) symptoms"
+        }
+        
+        else {
+            if thisSymptomsCount == 1 {
+                cell.symptomsLabel.text = "1 symptom"
+            }
+            
+            else {
+                cell.symptomsLabel.text = "No symptoms"
+            }
+        }
         
         return cell
     }
@@ -116,12 +115,16 @@ class RecordsTableViewController: UITableViewController {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
+
+        countSymptoms()
+
         self.tableView.reloadData()
 
-        
     }
     
     func countSymptoms() {
+        
+        symptomsCountArray = [Int]()
         
         var i = 0
         while i < recordsList.count {
@@ -131,12 +134,12 @@ class RecordsTableViewController: UITableViewController {
             var j = 0
             while j < recordSymptomList.count {
                 
-                if recordsList[i].objectID.description == recordSymptomList[j].valueForKey("recordID") as! String {
+                if recordsList[i].objectID.URIRepresentation().absoluteString == recordSymptomList[j].valueForKey("recordID") as! String {
                     
                     var k = 0
                     while k < symptomsList.count {
                         
-                        if recordSymptomList[j].valueForKey("symptomID") as! String == symptomsList[k].objectID.description {
+                        if recordSymptomList[j].valueForKey("symptomID") as! String == symptomsList[k].objectID.URIRepresentation().absoluteString {
                             
                             symptomsCount += 1
                             
@@ -152,7 +155,7 @@ class RecordsTableViewController: UITableViewController {
                 
             }
             
-            symptomsCountArray[i] = symptomsCount
+           symptomsCountArray.append(symptomsCount)
             
             i += 1
             

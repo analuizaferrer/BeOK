@@ -34,7 +34,7 @@ class SoundsTableViewController: UITableViewController {
         
         sounds += ["Rainforest sounds", "Cicadas noise", "Lake", "Waves"]
         urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
-        checked += [false, false, false, false]
+        checked += [true, false, false, false]
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,12 +91,17 @@ class SoundsTableViewController: UITableViewController {
                 checked[indexPath.row] = true
                 selectedSound = sounds[indexPath.row]
                 
+                
+                for (index, _) in checked.enumerate() {
+                    
+                    if index != indexPath.row{
+                        let otherCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
+                        
+                        otherCell?.accessoryType = .None
+                    }
+                }
+                
             }
         }
-    }
-    
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .None
-        checked[indexPath.row] = false
     }
 }
