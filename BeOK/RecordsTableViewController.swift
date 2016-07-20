@@ -21,6 +21,12 @@ class RecordsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -79,13 +85,21 @@ class RecordsTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        fetchRecords()
+        
+//        countSymptoms()
+        
+    }
+    
+    func fetchRecords() {
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequestRecord = NSFetchRequest(entityName: "Record")
         let fetchRequestSymptom = NSFetchRequest(entityName: "Symptom")
         let fetchRequestRecordSymptom = NSFetchRequest(entityName: "RecordSymptom")
-
+        
         do {
             
             let resultsRecord = try managedContext.executeFetchRequest(fetchRequestRecord)
@@ -97,14 +111,14 @@ class RecordsTableViewController: UITableViewController {
             let resultsRecordSymptom = try managedContext.executeFetchRequest(fetchRequestRecordSymptom)
             recordSymptomList = resultsRecordSymptom as! [NSManagedObject]
         }
-        
+            
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-//        countSymptoms()
-        
         self.tableView.reloadData()
+
+        
     }
     
     func countSymptoms() {
@@ -151,6 +165,70 @@ class RecordsTableViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
+    
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+
+            //apagar do coredata
+            
+            let AppDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context:NSManagedObjectContext = AppDel.managedObjectContext
+            
+            let deletedRecordID = recordsList[indexPath.row].objectID.description
+            
+            context.deleteObject(recordsList[indexPath.row] as NSManagedObject)
+            recordsList.removeAtIndex(indexPath.row)
+            
+            for (index, item) in recordSymptomList.enumerate() {
+                print(index)
+                print(recordSymptomList.count)
+                
+                if item.valueForKey("recordID") as! String == deletedRecordID{
+                    
+                    context.deleteObject(recordSymptomList[index] as NSManagedObject)
+                    recordSymptomList.removeAtIndex(index)
+                    print("woooe")
+                    break
+                }
+                
+            }
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+            self.tableView.reloadData()
+            
+        }
+        
+    }
+    
+    /*
+ 
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if (editingStyle == UITableViewCellEditingStyle.Delete) {
+     
+     let AppDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+     let context:NSManagedObjectContext = AppDel.managedObjectContext
+     
+     context.deleteObject(messagesList[indexPath.row] as NSManagedObject)
+     messagesList.removeAtIndex(indexPath.row)
+     
+     do{
+     try context.save()
+     } catch {
+     print("error")
+     }
+     
+     self.tableView.reloadData()
+     }
+     }
+ 
+ 
+ 
+ 
+ */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if  segue.identifier == "segueToDetails" {
