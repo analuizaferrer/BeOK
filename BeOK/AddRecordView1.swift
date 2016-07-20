@@ -8,8 +8,16 @@
 
 import UIKit
 import Foundation
+import CoreLocation
+import AddressBookUI
 
-class AddRecordView1: UIView {
+protocol AddRecordDelegate {
+    func showAlert ()
+}
+
+class AddRecordView1: UIView, CLLocationManagerDelegate {
+    
+    var delegate: AddRecordDelegate?
     
     var dateLabel = UILabel(frame: CGRectMake(15.3,91,400,18))
     var datePicker = UIDatePicker(frame: CGRectMake(15,129,323,146))
@@ -22,10 +30,23 @@ class AddRecordView1: UIView {
     var getLocationButton = UIButton(frame: CGRectMake(170,400,200,18))
     var pageCounter = UIImageView(frame: CGRectMake(121.5, 606.8, 131, 26))
   
-
-  
     var durationValue = 30
     var date: NSDate!
+    
+    var locationManager: CLLocationManager!
+    
+    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
+    let apikey = "YOUR_API_KEY"
+    
+    var location: CLLocation! {
+        
+        didSet {
+            
+            reverseGeocoding(location.coordinate.latitude, longitude: location.coordinate.longitude)
+            
+        }
+        
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,12 +83,13 @@ class AddRecordView1: UIView {
         self.locationLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(locationLabel)
         
-        self.locationTextField.placeholder = "i.e. office, home etc"
-        self.addSubview(locationTextField)
-        
         self.getLocationButton.setTitle("Get Current Location", forState: UIControlState.Normal)
         self.getLocationButton.setTitleColor(UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1), forState: UIControlState.Normal)
+        self.getLocationButton.addTarget(self, action: #selector(updateLocationAction), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(getLocationButton)
+        
+        self.locationTextField.placeholder = "i.e. office, home etc"
+        self.addSubview(locationTextField)
         
         self.pageCounter.image = UIImage(named: "PageCounter1")
         self.addSubview(pageCounter)
@@ -96,5 +118,67 @@ class AddRecordView1: UIView {
         }
         durationRead.text = "\(durationValue) min"
     }
+    
+    
+    @IBAction func updateLocationAction(sender: AnyObject) {
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        checkCoreLocationPermission()
+        
+    }
+    
+    func checkCoreLocationPermission () {
+        
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            
+            locationManager.startUpdatingLocation()
+            
+        }
+            
+        else if CLLocationManager.authorizationStatus() == .NotDetermined {
+            
+            locationManager.requestWhenInUseAuthorization()
+            
+            locationManager.startUpdatingLocation()
+            
+        }
+            
+        else {
+            self.delegate?.showAlert()
+        }
+        
+    }
+    
+    //MARK: - CLLocatioManagerDelegate
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        location = locations.last
+        
+        locationManager.stopUpdatingLocation()
+        
+    }
+    
+    func reverseGeocoding(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            if error != nil {
+                print(error)
+                return
+            }
+            else if placemarks?.count > 0 {
+                let pm = placemarks![0]
+                let address = ABCreateStringWithAddressDictionary(pm.addressDictionary!, false)
+                self.locationTextField.text = "\(address)"
+                if pm.areasOfInterest?.count > 0 {
+                    let areaOfInterest = pm.areasOfInterest?[0]
+                    self.locationTextField.text = "\(areaOfInterest!)"
+                }
+            }
+        })
+    }
+
     
 }

@@ -11,7 +11,7 @@ import CoreData
 import CoreLocation
 import AddressBookUI
 
-class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
+class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddRecordDelegate {
     
     var firstView : AddRecordView1!
     var secondView : AddRecordView2!
@@ -26,26 +26,12 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     var rightNavBarButton: UIBarButtonItem!
     
     var navItem: UINavigationItem!
-    
-//    var locationManager: CLLocationManager!
-//    
-//    let baseUrl = "https://maps.googleapis.com/maps/api/geocode/json?"
-//    let apikey = "YOUR_API_KEY"
-//    
-//    var location: CLLocation! {
-//        
-//        didSet {
-//        
-//            reverseGeocoding(location.coordinate.latitude, longitude: location.coordinate.longitude)
-//            
-//        }
-//        
-//    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.firstView = AddRecordView1(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
+        firstView.delegate = self
         self.secondView = AddRecordView2(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         self.thirdView = AddRecordView3(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         
@@ -250,70 +236,10 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    func showAlert() {
+        let alert = UIAlertController(title: "Hold Up...", message: "Before you continue, Be OK wants access to your location. Turn on Location Services in your device settings.", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
-//
-//    @IBAction func updateLocationAction(sender: AnyObject) {
-//        
-//        locationManager = CLLocationManager()
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        checkCoreLocationPermission()
-//        
-//    }
-//    
-//    func checkCoreLocationPermission () {
-//        
-//        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-//            
-//            locationManager.startUpdatingLocation()
-//            
-//        }
-//        
-//        else if CLLocationManager.authorizationStatus() == .NotDetermined {
-//            
-//            locationManager.requestWhenInUseAuthorization()
-//            
-//            locationManager.startUpdatingLocation()
-//            
-//        }
-//        
-//        else {
-//            
-//            let alert = UIAlertController(title: "Hold Up...", message: "Before you continue, Be OK wants access to your location. Turn on Location Services in your device settings.", preferredStyle: UIAlertControllerStyle.Alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//            self.presentViewController(alert, animated: true, completion: nil)
-//            
-//        }
-//        
-//    }
-    
-    // MARK: - CLLocatioManagerDelegate
-    
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        
-//        location = locations.last
-//        
-//        locationManager.stopUpdatingLocation()
-//        
-//    }
-//    
-//    func reverseGeocoding(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-//        let location = CLLocation(latitude: latitude, longitude: longitude)
-//        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-//            if error != nil {
-//                print(error)
-//                return
-//            }
-//            else if placemarks?.count > 0 {
-//                let pm = placemarks![0]
-//                let address = ABCreateStringWithAddressDictionary(pm.addressDictionary!, false)
-//                self.locationTextField.text = "\(address)"
-//                if pm.areasOfInterest?.count > 0 {
-//                    let areaOfInterest = pm.areasOfInterest?[0]
-//                    self.locationTextField.text = "\(areaOfInterest!)"
-//                }
-//            }
-//        })
-//    }
-
 }
