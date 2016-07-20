@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let defaultSymptomsList: [String] = ["Accelerated Heartbeat", "Sweat", "Shaking/Trembling", "Hyperventilation", "Choking", "Chest Pain", "Nausea", "Dizziness", "Derealization/Depersonalization", "Loss of Control", "Fear of Death", "Numbness", "Chills"]
 
+    let defaultCopingMessages: [String] = ["You're gonna be okay.", "You can get through this.", "I am proud of you. Good job.", "Concentrate on your breathing. Stay in the present.", "It's not the place that is bothering you; it's the thought.", "What you are feeling is scary, but it is not dangerous."]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -35,11 +36,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for i in defaultSymptomsList {
                 saveDefaultSymptomsInCoreData(i)
             }
+            
+            for i in defaultCopingMessages {
+                saveDefaultMessagesInCoreData(i)
+            }
         }
-        
-        
 
         return true
+    }
+    
+    func saveDefaultMessagesInCoreData(message: String) {
+      
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let messageEntity =  NSEntityDescription.entityForName("Message", inManagedObjectContext: managedContext)
+        let newMessage = NSManagedObject(entity: messageEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        newMessage.setValue(message, forKey: "message")
+        
+        do {
+            try managedContext.save()
+        }
+            
+        catch let error as NSError  {
+            
+            print("Could not save \(error), \(error.userInfo)")
+            
+        }
+
     }
     
     func saveDefaultSymptomsInCoreData(symptom: String) {

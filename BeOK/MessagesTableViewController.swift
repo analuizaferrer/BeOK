@@ -7,42 +7,111 @@
 //
 
 import UIKit
+import CoreData
 
 class MessagesTableViewController: UITableViewController {
- 
-    var copingMessages: [String] = []
+    
+    var messagesList = [NSManagedObject]()
+    
+    var checked: [Bool] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        copingMessages += ["You're gonna be okay.", "You can get through this.", "I am proud of you. Good job.", "Concentrate on your breathing. Stay in the present.", "It's not the place that is bothering you; it's the thought.", "What you are feeling is scary, but it is not dangerous."]
+        loadSymptomsList()
+        
+        loadCheckedArray()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return copingMessages.count
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequestMessage = NSFetchRequest(entityName: "Message")
+        
+        do {
+            let resultsMessage = try managedContext.executeFetchRequest(fetchRequestMessage)
+            messagesList = resultsMessage as! [NSManagedObject]
+        }
+        
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        self.tableView.reloadData()
     }
-
+    
+    func loadSymptomsList () {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Message")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            messagesList = results as! [NSManagedObject]
+        }
+            
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+    
+    func loadCheckedArray () {
+        var i = 0
+        while i < messagesList.count {
+            checked.append(false)
+            i += 1
+        }
+    }
+    
+    @IBAction func prepareForUnwindToMessages(segue: UIStoryboardSegue) {
+    }
+    
+    // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messagesList.count
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-       
+        
         cell.textLabel!.numberOfLines = 0
-        cell.textLabel?.text = copingMessages[indexPath.row]
-
+    
+        let thisMessage = messagesList[indexPath.row]
+        cell.textLabel?.text = thisMessage.valueForKey("message") as? String
+        
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 70
     }
-
-    @IBAction func addMessage(sender: AnyObject) {
-        
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            
+            let AppDel: AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            let context: NSManagedObjectContext = AppDel.managedObjectContext
+            
+            context.deleteObject(messagesList[indexPath.row] as NSManagedObject)
+            messagesList.removeAtIndex(indexPath.row)
+            
+            do{
+                try context.save()
+            } catch {
+                print("error")
+            }
+            
+            self.tableView.reloadData()
+        }
     }
 }
