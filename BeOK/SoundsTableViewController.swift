@@ -17,6 +17,8 @@ class SoundsTableViewController: UITableViewController {
     
     var checked: [Bool] = []
     
+    var selectedSound: String!
+    
     let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
     let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
     
@@ -38,6 +40,10 @@ class SoundsTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        // salavar selectedSound no coredata
     }
     
     // MARK: - Table view data source
@@ -80,9 +86,10 @@ class SoundsTableViewController: UITableViewController {
             cell.selectionStyle = UITableViewCellSelectionStyle.None
             
             if cell.accessoryType == .None {
-                print("entrou aqui 2")
+                
                 cell.accessoryType = .Checkmark
                 checked[indexPath.row] = true
+                selectedSound = sounds[indexPath.row]
                 
             }
         }
