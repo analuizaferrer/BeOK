@@ -203,8 +203,9 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
                 
                 let recordSymptom = NSManagedObject(entity: recordSymptomEntity!, insertIntoManagedObjectContext: managedContext)
                 
-                recordSymptom.setValue(record.objectID.description, forKey: "recordID")
-                recordSymptom.setValue(self.symptomsList[i].objectID.description, forKey: "symptomID")
+                recordSymptom.setValue(record.objectID.URIRepresentation().absoluteString, forKey: "recordID")
+                
+                recordSymptom.setValue(self.symptomsList[i].objectID.URIRepresentation().absoluteString, forKey: "symptomID")
                 
                 do {
                     
