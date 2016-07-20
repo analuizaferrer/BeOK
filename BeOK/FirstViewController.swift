@@ -16,9 +16,17 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var copingMessage: UILabel!
     @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var outButton: UIButton!
+   
+    var sounds: [String] = []
     
-    var audioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("waves", ofType: "wav")!)
+    var urls: [NSURL] = []
     
+    let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
+    let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
+    
+    let lakeURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("lake", ofType: "wav")!)
+    let wavesURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("waves", ofType: "wav")!)
+
     var audioPlayer = AVAudioPlayer()
     
     var breathingTimer = NSTimer()
@@ -27,32 +35,35 @@ class FirstViewController: UIViewController {
     
     var copingMessages = [NSManagedObject]()
     
-    var index = 0
+    var sound = [NSManagedObject]()
     
+    var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        sounds += ["Rainforest sounds", "Cicadas noise", "Lake", "Waves"]
+        urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
         
         self.outButton.hidden = true
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
+        let fetchRequestSound = NSFetchRequest(entityName: "Sound")
         let fetchRequestMessages = NSFetchRequest(entityName: "Message")
 
+        
         do {
-            
+            let resultSound = try managedContext.executeFetchRequest(fetchRequestSound)
+            sound = resultSound as! [NSManagedObject]
             let resultsMessages = try managedContext.executeFetchRequest(fetchRequestMessages)
             copingMessages = resultsMessages as! [NSManagedObject]
-
         }
-            
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        
-        
     }
     
     func animateBreathing() {
@@ -117,12 +128,24 @@ class FirstViewController: UIViewController {
         
         breathingTimer.fire()
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOfURL: audioURL, fileTypeHint: nil)
-            audioPlayer.play()
-        }
-        catch let error as NSError {
-            print(error.description)
+        let currentSound = sound[0]
+        
+        var i: Int = 0
+        
+        while i < sounds.count {
+            
+            if sounds[i] == (currentSound.valueForKey("sound") as? String) {
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOfURL: urls[i], fileTypeHint: nil)
+                    audioPlayer.play()
+                }
+                catch let error as NSError {
+                    print(error.description)
+                }
+                
+                break
+            }
+            i += 1
         }
     }
     
