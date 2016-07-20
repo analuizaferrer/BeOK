@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class SoundsTableViewController: UITableViewController {
     
@@ -19,6 +20,9 @@ class SoundsTableViewController: UITableViewController {
     
     var selectedSound: String!
     
+    var lastSound:[NSManagedObject] = []
+    var currentSound = [NSManagedObject]()
+    
     let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
     let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
     
@@ -29,12 +33,50 @@ class SoundsTableViewController: UITableViewController {
     
     var audioPlayer = AVAudioPlayer()
     
+    override func viewWillAppear(animated: Bool) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequestSound = NSFetchRequest(entityName: "Sound")
+        
+        do {
+            
+            let soundRecord = try managedContext.executeFetchRequest(fetchRequestSound)
+            currentSound = soundRecord as! [NSManagedObject]
+            
+            
+        }
+            
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        //lastSound.insert(currentSound[0], atIndex: 0)
+       // print(" __ last sound  will appear : \(laSound[0])")
+        self.selectedSound = currentSound[0].valueForKey("sound") as? String
+        print(" __ selected sound will appear : \(selectedSound)")
+
+        
+        for sound in sounds {
+            
+            if sound == selectedSound{
+                checked += [true]
+            } else {
+                checked += [false]
+            }
+        }
+        print(checked)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sounds += ["Rainforest sounds", "Cicadas noise", "Lake", "Waves"]
         urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
-        checked += [true, false, false, false]
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,8 +84,35 @@ class SoundsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        // salvar selectedSound no coredata
+    // Be Okay - personal comfort zone
+    // Comfort Zone - it's gonna be okay
+    //
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let soundEntity = NSEntityDescription.entityForName("Sound", inManagedObjectContext: managedContext)
+        
+        let sound = NSManagedObject(entity: soundEntity!, insertIntoManagedObjectContext: managedContext)
+        
+        //managedContext.deleteObject(currentSound[0] as NSManagedObject)
+        
+        sound.setValue(selectedSound, forKey: "sound")
+        
+        print(" __ selected sound  will disappear : \(selectedSound)")
+        
+        do {
+            try managedContext.save()
+            print("save successful")
+        }
+            
+        catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        
+        checked = []
         
     }
     
@@ -91,7 +160,8 @@ class SoundsTableViewController: UITableViewController {
                 cell.accessoryType = .Checkmark
                 checked[indexPath.row] = true
                 selectedSound = sounds[indexPath.row]
-                
+//                print(" __ selected sound  did select : \(selectedSound)")
+
                 for (index, _) in checked.enumerate() {
                     
                     if index != indexPath.row{
