@@ -13,6 +13,9 @@ class RecordsTableViewController: UITableViewController {
     
     var recordsList = [NSManagedObject]()
     var symptomsList = [NSManagedObject]()
+    var recordSymptomList = [NSManagedObject]()
+    
+    var symptomsCountArray: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +50,14 @@ class RecordsTableViewController: UITableViewController {
         cell.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         cell.descriptionLabel.text = thisRecord.valueForKey("attackDescription") as? String
         
-//        let symptomsCount = thisRecord.symptoms?.count
+//        let thisSymptomsCount = symptomsCountArray[indexPath.row]
 //        
-//        if symptomsCount > 1 {
-//            cell.symptomsLabel.text = "\(symptomsCount!) symptoms"
+//        if thisSymptomsCount > 1 {
+//            cell.symptomsLabel.text = "\(thisSymptomsCount) symptoms"
 //        }
 //        
 //        else {
-//            if symptomsCount == 1 {
+//            if thisSymptomsCount == 1 {
 //                cell.symptomsLabel.text = "1 symptom"
 //            }
 //            
@@ -81,27 +84,67 @@ class RecordsTableViewController: UITableViewController {
         
         let fetchRequestRecord = NSFetchRequest(entityName: "Record")
         let fetchRequestSymptom = NSFetchRequest(entityName: "Symptom")
-        let predicate = NSPredicate(format: "%K == %@", "symptoms.symptom", "Bart")
+        let fetchRequestRecordSymptom = NSFetchRequest(entityName: "RecordSymptom")
 
-        
-        
         do {
+            
             let resultsRecord = try managedContext.executeFetchRequest(fetchRequestRecord)
             recordsList = resultsRecord as! [NSManagedObject]
             
             let resultsSymptom = try managedContext.executeFetchRequest(fetchRequestSymptom)
-            for managedObject in resultsSymptom {
-                if let symptom = managedObject.valueForKey("symptom") {
-                    print("AQUUUUUUUUUI: \(symptom)")
-                }
-            }
+            symptomsList = resultsSymptom as! [NSManagedObject]
+            
+            let resultsRecordSymptom = try managedContext.executeFetchRequest(fetchRequestRecordSymptom)
+            recordSymptomList = resultsRecordSymptom as! [NSManagedObject]
         }
         
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
+//        countSymptoms()
+        
         self.tableView.reloadData()
+    }
+    
+    func countSymptoms() {
+        
+        var i = 0
+        while i < recordsList.count {
+            
+            var symptomsCount = 0
+            
+            var j = 0
+            while j < recordSymptomList.count {
+                
+                if recordsList[i].objectID.description == recordSymptomList[j].valueForKey("recordID") as! String {
+                    
+                    var k = 0
+                    while k < symptomsList.count {
+                        
+                        if recordSymptomList[j].valueForKey("symptomID") as! String == symptomsList[k].objectID.description {
+                            
+                            symptomsCount += 1
+                            
+                        }
+                        
+                        k += 1
+                        
+                    }
+                    
+                }
+                
+                j += 1
+                
+            }
+            
+            symptomsCountArray[i] = symptomsCount
+            
+            i += 1
+            
+        }
+
+        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
