@@ -18,6 +18,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
     var thirdView: AddRecordView3!
     
     var recordsList = [NSManagedObject]()
+    var symptomsList = [NSManagedObject]()
     
     var recordSymptoms: [String]!
     
@@ -171,7 +172,83 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate {
             print("Could not save \(error), \(error.userInfo)")
         
         }
+        
+        saveRecordSymptom(record)
+        
+        
     }
+    
+    func saveRecordSymptom(record: NSManagedObject) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequestSymptom = NSFetchRequest(entityName: "Symptom")
+        
+        do {
+            let resultsSymptom = try managedContext.executeFetchRequest(fetchRequestSymptom)
+            symptomsList = resultsSymptom as! [NSManagedObject]
+        }
+            
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+
+        let recordSymptomEntity =  NSEntityDescription.entityForName("RecordSymptom", inManagedObjectContext: managedContext)
+        
+        var i = 0
+        while i < secondView.checked.count {
+            
+            if secondView.checked[i] == true {
+                
+                let recordSymptom = NSManagedObject(entity: recordSymptomEntity!, insertIntoManagedObjectContext: managedContext)
+                
+                recordSymptom.setValue(record.objectID.description, forKey: "recordID")
+                recordSymptom.setValue(self.symptomsList[i].objectID.description, forKey: "symptomID")
+                
+                do {
+                    
+                    try managedContext.save()
+                    
+                }
+                    
+                catch let error as NSError  {
+                    
+                    print("Could not save \(error), \(error.userInfo)")
+                    
+                }
+                
+            }
+            
+            i += 1
+            
+        }
+        
+        if secondView.otherSymptomTextField.text != "" {
+            
+            let recordSymptom = NSManagedObject(entity: recordSymptomEntity!, insertIntoManagedObjectContext: managedContext)
+            
+            recordSymptom.setValue(record.objectID.description, forKey: "recordID")
+            recordSymptom.setValue(self.symptomsList[i].objectID.description, forKey: "symptomID")
+            
+            do {
+                
+                try managedContext.save()
+                
+            }
+                
+            catch let error as NSError  {
+                
+                print("Could not save \(error), \(error.userInfo)")
+                
+            }
+
+            
+        }
+
+        
+    }
+    
     
 //
 //    @IBAction func updateLocationAction(sender: AnyObject) {
