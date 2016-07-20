@@ -43,7 +43,8 @@ class SoundsTableViewController: UITableViewController {
     }
     
     override func viewDidDisappear(animated: Bool) {
-        // salavar selectedSound no coredata
+        // salvar selectedSound no coredata
+        
     }
     
     // MARK: - Table view data source
@@ -62,7 +63,6 @@ class SoundsTableViewController: UITableViewController {
         cell.textLabel?.text = sounds[indexPath.row]
         
         if !checked[indexPath.row] {
-            print("entrou aqui 1")
             cell.accessoryType = .None
         } else if checked[indexPath.row] {
             cell.accessoryType = .Checkmark
@@ -74,6 +74,7 @@ class SoundsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            
             do {
                 audioPlayer = try AVAudioPlayer(contentsOfURL: urls[indexPath.row], fileTypeHint: nil)
                 audioPlayer.prepareToPlay()
@@ -91,7 +92,6 @@ class SoundsTableViewController: UITableViewController {
                 checked[indexPath.row] = true
                 selectedSound = sounds[indexPath.row]
                 
-                
                 for (index, _) in checked.enumerate() {
                     
                     if index != indexPath.row{
@@ -100,7 +100,6 @@ class SoundsTableViewController: UITableViewController {
                         otherCell?.accessoryType = .None
                     }
                 }
-                
             }
         }
     }
