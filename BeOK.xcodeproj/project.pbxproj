@@ -22,11 +22,11 @@
 		18AAEE671D396BDA00F89517 /* AddRecordView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE661D396BDA00F89517 /* AddRecordView1.swift */; };
 		18AAEE691D3ADBA800F89517 /* AddRecordView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE681D3ADBA800F89517 /* AddRecordView2.swift */; };
 		18AAEE6F1D3AE7FE00F89517 /* AddRecordView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE6E1D3AE7FE00F89517 /* AddRecordView3.swift */; };
-		18AAEE761D3D3FA800F89517 /* Cicadas noise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18AAEE741D3D3FA800F89517 /* Cicadas noise.mp3 */; };
-		18AAEE771D3D3FA800F89517 /* Rainforest sounds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18AAEE751D3D3FA800F89517 /* Rainforest sounds.mp3 */; };
+		18AAEE761D3D3FA800F89517 /* Cicadas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18AAEE741D3D3FA800F89517 /* Cicadas.mp3 */; };
+		18AAEE771D3D3FA800F89517 /* Rainforest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18AAEE751D3D3FA800F89517 /* Rainforest.mp3 */; };
 		18AAEE7B1D3D869600F89517 /* RecordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */; };
-		EF0FB97D1D3EBA40000A6E60 /* lake.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF0FB97A1D3EBA40000A6E60 /* lake.wav */; };
-		EF0FB97E1D3EBA40000A6E60 /* waves.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF0FB97B1D3EBA40000A6E60 /* waves.wav */; };
+		EF0FB97D1D3EBA40000A6E60 /* Lake.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF0FB97A1D3EBA40000A6E60 /* Lake.wav */; };
+		EF0FB97E1D3EBA40000A6E60 /* Waves.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF0FB97B1D3EBA40000A6E60 /* Waves.wav */; };
 		F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */; };
 		F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */; };
 		F6D4608D1D3FD0F40017CAF9 /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D4608C1D3FD0F40017CAF9 /* AddMessageViewController.swift */; };
@@ -51,11 +51,11 @@
 		18AAEE661D396BDA00F89517 /* AddRecordView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView1.swift; sourceTree = "<group>"; };
 		18AAEE681D3ADBA800F89517 /* AddRecordView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView2.swift; sourceTree = "<group>"; };
 		18AAEE6E1D3AE7FE00F89517 /* AddRecordView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView3.swift; sourceTree = "<group>"; };
-		18AAEE741D3D3FA800F89517 /* Cicadas noise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cicadas noise.mp3"; sourceTree = "<group>"; };
-		18AAEE751D3D3FA800F89517 /* Rainforest sounds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Rainforest sounds.mp3"; sourceTree = "<group>"; };
+		18AAEE741D3D3FA800F89517 /* Cicadas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cicadas.mp3; sourceTree = "<group>"; };
+		18AAEE751D3D3FA800F89517 /* Rainforest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Rainforest.mp3; sourceTree = "<group>"; };
 		18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailsViewController.swift; sourceTree = "<group>"; };
-		EF0FB97A1D3EBA40000A6E60 /* lake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lake.wav; sourceTree = "<group>"; };
-		EF0FB97B1D3EBA40000A6E60 /* waves.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = waves.wav; sourceTree = "<group>"; };
+		EF0FB97A1D3EBA40000A6E60 /* Lake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Lake.wav; sourceTree = "<group>"; };
+		EF0FB97B1D3EBA40000A6E60 /* Waves.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Waves.wav; sourceTree = "<group>"; };
 		F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		F6D4608C1D3FD0F40017CAF9 /* AddMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
@@ -145,10 +145,10 @@
 			children = (
 				180F6A661D34129A00700D07 /* Info.plist */,
 				180F6A581D34129A00700D07 /* AppDelegate.swift */,
-				EF0FB97A1D3EBA40000A6E60 /* lake.wav */,
-				EF0FB97B1D3EBA40000A6E60 /* waves.wav */,
-				18AAEE741D3D3FA800F89517 /* Cicadas noise.mp3 */,
-				18AAEE751D3D3FA800F89517 /* Rainforest sounds.mp3 */,
+				EF0FB97A1D3EBA40000A6E60 /* Lake.wav */,
+				EF0FB97B1D3EBA40000A6E60 /* Waves.wav */,
+				18AAEE741D3D3FA800F89517 /* Cicadas.mp3 */,
+				18AAEE751D3D3FA800F89517 /* Rainforest.mp3 */,
 				180F6A611D34129A00700D07 /* Assets.xcassets */,
 			);
 			name = "Supporting files";
@@ -215,10 +215,10 @@
 			files = (
 				180F6A651D34129A00700D07 /* LaunchScreen.storyboard in Resources */,
 				180F6A621D34129A00700D07 /* Assets.xcassets in Resources */,
-				EF0FB97E1D3EBA40000A6E60 /* waves.wav in Resources */,
-				18AAEE761D3D3FA800F89517 /* Cicadas noise.mp3 in Resources */,
-				EF0FB97D1D3EBA40000A6E60 /* lake.wav in Resources */,
-				18AAEE771D3D3FA800F89517 /* Rainforest sounds.mp3 in Resources */,
+				EF0FB97E1D3EBA40000A6E60 /* Waves.wav in Resources */,
+				18AAEE761D3D3FA800F89517 /* Cicadas.mp3 in Resources */,
+				EF0FB97D1D3EBA40000A6E60 /* Lake.wav in Resources */,
+				18AAEE771D3D3FA800F89517 /* Rainforest.mp3 in Resources */,
 				180F6A601D34129A00700D07 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

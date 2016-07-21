@@ -12,7 +12,7 @@ import CoreData
 
 class SoundsTableViewController: UITableViewController {
     
-    var sounds: [String] = []
+    var soundsNames: [String] = []
     
     var urls: [NSURL] = []
     
@@ -21,14 +21,15 @@ class SoundsTableViewController: UITableViewController {
     var selectedSound: String!
     
     var lastSound:[NSManagedObject] = []
-    var currentSound = [NSManagedObject]()
+    var sounds = [NSManagedObject]()
     
-    let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
-    let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
+    let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas", ofType: "mp3")!)
     
-    let lakeURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("lake", ofType: "wav")!)
-    //let chuvaURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("chuva", ofType: "wav")!)
-    let wavesURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("waves", ofType: "wav")!)
+    let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest", ofType: "mp3")!)
+    
+    let lakeURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Lake", ofType: "wav")!)
+    
+    let wavesURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Waves", ofType: "wav")!)
     
     
     var audioPlayer = AVAudioPlayer()
@@ -41,31 +42,32 @@ class SoundsTableViewController: UITableViewController {
         let fetchRequestSound = NSFetchRequest(entityName: "Sound")
         
         do {
-            
             let soundRecord = try managedContext.executeFetchRequest(fetchRequestSound)
-            currentSound = soundRecord as! [NSManagedObject]
-            
-            
+            sounds = soundRecord as! [NSManagedObject]
         }
             
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-        //lastSound.insert(currentSound[0], atIndex: 0)
-       // print(" __ last sound  will appear : \(laSound[0])")
-        self.selectedSound = currentSound[0].valueForKey("sound") as? String
-        print(" __ selected sound will appear : \(selectedSound)")
-
+//        //lastSound.insert(currentSound[0], atIndex: 0)
+//       // print(" __ last sound  will appear : \(laSound[0])")
+//        self.selectedSound = sounds[0].valueForKey("sound") as? String
+//        print(" __ selected sound will appear : \(selectedSound)")
+//
+        var i: Int = 0
         
-        for sound in sounds {
+        while i < sounds.count {
             
-            if sound == selectedSound{
+            if sounds[i].valueForKey("active") as? Bool == true {
                 checked += [true]
             } else {
                 checked += [false]
             }
+            
+            i += 1
         }
+        
         print(checked)
         
     }
@@ -73,10 +75,8 @@ class SoundsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sounds += ["Rainforest sounds", "Cicadas noise", "Lake", "Waves"]
+        soundsNames += ["Rainforest", "Cicadas", "Lake", "Waves"]
         urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,27 +90,38 @@ class SoundsTableViewController: UITableViewController {
     
     override func viewWillDisappear(animated: Bool) {
         
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
-        let soundEntity = NSEntityDescription.entityForName("Sound", inManagedObjectContext: managedContext)
-        
-        let sound = NSManagedObject(entity: soundEntity!, insertIntoManagedObjectContext: managedContext)
-        
-        //managedContext.deleteObject(currentSound[0] as NSManagedObject)
-        
-        sound.setValue(selectedSound, forKey: "sound")
-        
-        print(" __ selected sound  will disappear : \(selectedSound)")
+        let fetchRequestSound = NSFetchRequest(entityName: "Sound")
         
         do {
-            try managedContext.save()
-            print("save successful")
+            let resultsSound = try managedContext.executeFetchRequest(fetchRequestSound)
+            sounds = resultsSound as! [NSManagedObject]
         }
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        var i: Int = 0
+        
+        while i < sounds.count {
+            sounds[i].setValue(checked[i], forKey: "active")
             
-        catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+            do {
+                try managedContext.save()
+                print("save successful")
+            }
+            
+            catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+            
+            i += 1
         }
+ 
+        print(" __ selected sound  will disappear : \(selectedSound)")
         
         checked = []
         
@@ -120,7 +131,7 @@ class SoundsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sounds.count
+        return soundsNames.count
     }
     
     
@@ -129,7 +140,7 @@ class SoundsTableViewController: UITableViewController {
         
         UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         
-        cell.textLabel?.text = sounds[indexPath.row]
+        cell.textLabel?.text = soundsNames[indexPath.row]
         
         if !checked[indexPath.row] {
             cell.accessoryType = .None
@@ -159,14 +170,12 @@ class SoundsTableViewController: UITableViewController {
                 
                 cell.accessoryType = .Checkmark
                 checked[indexPath.row] = true
-                selectedSound = sounds[indexPath.row]
-//                print(" __ selected sound  did select : \(selectedSound)")
 
                 for (index, _) in checked.enumerate() {
                     
                     if index != indexPath.row{
                         let otherCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
-                        
+                        checked[index] = false
                         otherCell?.accessoryType = .None
                     }
                 }

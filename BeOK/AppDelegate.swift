@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaultSymptomsList: [String] = ["Accelerated Heartbeat", "Sweat", "Shaking/Trembling", "Hyperventilation", "Choking", "Chest Pain", "Nausea", "Dizziness", "Derealization/Depersonalization", "Loss of Control", "Fear of Death", "Numbness", "Chills"]
 
     let defaultCopingMessages: [String] = ["You're gonna be okay.", "You can get through this.", "I am proud of you. Good job.", "Concentrate on your breathing.", "Stay in the present.", "It's not the place that is bothering you; it's the thought.", "What you are feeling is scary, but it is not dangerous.", "Look around: everything is just fine.", "Pay attention to your breathing."]
-
-    let defaultSound: String = "Rainforest sounds"
+    
+    let defaultSounds: [String:Bool] = ["Rainforest":false, "Cicadas":false, "Lake":false, "Waves":true]
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -43,13 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 saveDefaultMessagesInCoreData(i)
             }
             
-            saveDefaultSoundInCoreData(defaultSound)
+            for i in defaultSounds {
+                saveDefaultSoundsInCoreData(i.0, isActive: i.1)
+            }
         }
 
         return true
     }
     
-    func saveDefaultSoundInCoreData(sound: String) {
+    func saveDefaultSoundsInCoreData(sound: String, isActive: Bool) {
        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -58,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let newSound = NSManagedObject(entity: soundEntity!, insertIntoManagedObjectContext: managedContext)
         
         newSound.setValue(sound, forKey: "sound")
+        newSound.setValue(isActive, forKey: "active")
         
         do {
             try managedContext.save()

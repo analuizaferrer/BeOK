@@ -21,11 +21,11 @@ class FirstViewController: UIViewController {
     
     var urls: [NSURL] = []
     
-    let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas noise", ofType: "mp3")!)
-    let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest sounds", ofType: "mp3")!)
+    let cicadasURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Cicadas", ofType: "mp3")!)
+    let rainforestURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Rainforest", ofType: "mp3")!)
     
-    let lakeURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("lake", ofType: "wav")!)
-    let wavesURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("waves", ofType: "wav")!)
+    let lakeURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Lake", ofType: "wav")!)
+    let wavesURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Waves", ofType: "wav")!)
 
     var audioPlayer = AVAudioPlayer()
     
@@ -43,7 +43,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        sounds += ["Rainforest sounds", "Cicadas noise", "Lake", "Waves"]
+        sounds += ["Rainforest", "Cicadas", "Lake", "Waves"]
         urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
         
         self.outButton.hidden = true
@@ -128,13 +128,11 @@ class FirstViewController: UIViewController {
         
         breathingTimer.fire()
         
-        let currentSound = sound[0]
-        
         var i: Int = 0
         
-        while i < sounds.count {
+        while i < sound.count{
             
-            if sounds[i] == (currentSound.valueForKey("sound") as? String) {
+            if sound[i].valueForKey("active") as? Bool == true {
                 do {
                     audioPlayer = try AVAudioPlayer(contentsOfURL: urls[i], fileTypeHint: nil)
                     audioPlayer.play()
