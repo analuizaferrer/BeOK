@@ -56,26 +56,25 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
     func rightBarButtonAction(sender: UIBarButtonItem) {
         
         if self.view == firstView {
+            
             self.view = secondView
             leftNavBarButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: #selector(self.leftBarButtonAction))
             navItem.leftBarButtonItem = leftNavBarButton
-        }
-        
-        else {
+        } else {
             
             if self.view == secondView {
+                
                 rightNavBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: #selector(self.rightBarButtonAction))
                 navItem.rightBarButtonItem = rightNavBarButton
                 self.view = thirdView
-            }
-            
-            else {
+                
+            } else {
+                
                 if self.view == thirdView {
                     performSegueWithIdentifier("segueToRecords", sender: self)
                 }
             }
         }
-        
     }
     
     func leftBarButtonAction(sender: UIBarButtonItem) {
@@ -100,7 +99,6 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
                 }
             }
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -114,7 +112,6 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
             }
             
             nextVC.tableView.reloadData()
-            
         }
     }
     
@@ -132,7 +129,6 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
             let symptom = NSManagedObject(entity: symptomEntity!, insertIntoManagedObjectContext: managedContext)
             
             symptom.setValue(otherSymptom, forKey: "symptom")
-            
         }
     
         record.setValue(date, forKey: "date")
@@ -148,20 +144,14 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
         }
         
         do {
-            
             try managedContext.save()
-            
         }
         
         catch let error as NSError  {
-            
             print("Could not save \(error), \(error.userInfo)")
-        
         }
         
         saveRecordSymptom(record)
-        
-        
     }
     
     func saveRecordSymptom(record: NSManagedObject) {
@@ -175,14 +165,13 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
             let resultsSymptom = try managedContext.executeFetchRequest(fetchRequestSymptom)
             symptomsList = resultsSymptom as! [NSManagedObject]
         }
-            
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
 
         let recordSymptomEntity =  NSEntityDescription.entityForName("RecordSymptom", inManagedObjectContext: managedContext)
         
-        var i = 0
+        var i: Int = 0
         while i < secondView.checked.count {
             
             if secondView.checked[i] == true {
@@ -194,21 +183,14 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
                 recordSymptom.setValue(self.symptomsList[i].objectID.URIRepresentation().absoluteString, forKey: "symptomID")
                 
                 do {
-                    
                     try managedContext.save()
-                    
                 }
-                    
                 catch let error as NSError  {
-                    
                     print("Could not save \(error), \(error.userInfo)")
-                    
                 }
-                
             }
             
             i += 1
-            
         }
         
         if secondView.otherSymptomTextField.text != "" {
@@ -219,21 +201,12 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
             recordSymptom.setValue(self.symptomsList[i].objectID.description, forKey: "symptomID")
             
             do {
-                
                 try managedContext.save()
-                
             }
-                
             catch let error as NSError  {
-                
                 print("Could not save \(error), \(error.userInfo)")
-                
             }
-
-            
         }
-
-        
     }
     
     func showAlert() {
@@ -241,5 +214,4 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
 }

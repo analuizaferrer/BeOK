@@ -311,11 +311,12 @@
                     <connections>
                         <segue destination="g6t-AX-gmi" kind="show" identifier="segueToMessages" id="nGq-Qd-cgy"/>
                         <segue destination="1I2-Hz-G9D" kind="show" identifier="segueToSounds" id="VjQ-Ic-T2t"/>
+                        <segue destination="ML2-ne-cmd" kind="show" identifier="segueToLicense" id="Jl8-Jy-052"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTY-3v-r8k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="845"/>
+            <point key="canvasLocation" x="802" y="887"/>
         </scene>
         <!--Coping messages-->
         <scene sceneID="WcD-W9-UJS">
@@ -352,6 +353,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gY2-SS-xU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="1857"/>
+        </scene>
+        <!--Licenses-->
+        <scene sceneID="yf8-KN-5SF">
+            <objects>
+                <viewController id="ML2-ne-cmd" customClass="LicenseViewController" customModule="BeOK" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yK4-lH-Vas"/>
+                        <viewControllerLayoutGuide type="bottom" id="77n-o8-OdH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OUv-Yl-yIs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kcj-bi-sDn">
+                                <rect key="frame" x="17" y="72" width="565" height="462"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">"Cicadas Noise"(http://www.orangefreesounds.com/cicadas-noise/) by Alexander is licensed under CC BY 4.0(https://creativecommons.org/licenses/by/4.0/)  "Rainforest Sounds"(http://www.orangefreesounds.com/rainforest-sounds/) by Alexander is licensed under CC BY 4.0(https://creativecommons.org/licenses/by/4.0/)  "Lake ambience"(https://www.freesound.org/people/gmegas/sounds/339003/) by gmegas(https://www.freesound.org/people/gmegas/) is licensed under CC BY 3.0(https://creativecommons.org/licenses/by/3.0/)  "Waves hitting the shore in Denmark"(https://www.freesound.org/people/tryl/sounds/347504/) by tryl(https://www.freesound.org/people/tryl/) is licensed under CC BY 3.0(https://creativecommons.org/licenses/by/3.0/)</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kcj-bi-sDn" firstAttribute="top" secondItem="yK4-lH-Vas" secondAttribute="bottom" constant="8" symbolic="YES" id="1Rr-rA-PAM"/>
+                            <constraint firstItem="kcj-bi-sDn" firstAttribute="centerX" secondItem="OUv-Yl-yIs" secondAttribute="centerX" id="Zm7-d2-Ttt"/>
+                            <constraint firstItem="kcj-bi-sDn" firstAttribute="leading" secondItem="OUv-Yl-yIs" secondAttribute="leadingMargin" constant="-2" id="ZpO-yf-i9D"/>
+                            <constraint firstItem="77n-o8-OdH" firstAttribute="top" secondItem="kcj-bi-sDn" secondAttribute="bottom" constant="17" id="zo8-pc-Ca7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Licenses" id="ZUq-3a-KnX"/>
+                    <connections>
+                        <outlet property="licensesText" destination="kcj-bi-sDn" id="VCM-h9-tlD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EO5-rl-RXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1544" y="1180"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RFg-hO-csN">

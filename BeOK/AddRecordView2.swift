@@ -17,7 +17,6 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     var symptomsTableView = UITableView()
     var pageCounter = UIImageView()
     
-    
     var symptomsList = [NSManagedObject]()
     
     var checked: [Bool] = []
@@ -48,7 +47,6 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
         loadSymptomsList()
         
         loadCheckedArray()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,7 +64,6 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             symptomsList = results as! [NSManagedObject]
         }
-            
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
@@ -78,7 +75,9 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func loadCheckedArray () {
-        var i = 0
+       
+        var i: Int = 0
+       
         while i < symptomsList.count {
             checked.append(false)
             i += 1
@@ -86,10 +85,10 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+       
         let cell = self.symptomsTableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
        
         UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
-        
         
         let thisSymptom = symptomsList[indexPath.row]
         cell.textLabel?.text = thisSymptom.valueForKey("symptom") as? String
@@ -99,12 +98,15 @@ class AddRecordView2: UIView, UITableViewDelegate, UITableViewDataSource {
         } else if checked[indexPath.row] {
             cell.accessoryType = .Checkmark
         }
+       
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
         if let cell = symptomsTableView.cellForRowAtIndexPath(indexPath) {
             cell.selectionStyle = UITableViewCellSelectionStyle.None
+            
             if cell.accessoryType == .Checkmark {
                 cell.accessoryType = .None
                 checked[indexPath.row] = false

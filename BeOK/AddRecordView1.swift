@@ -41,11 +41,8 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
     var location: CLLocation! {
         
         didSet {
-            
             reverseGeocoding(location.coordinate.latitude, longitude: location.coordinate.longitude)
-            
         }
-        
     }
     
     override init(frame: CGRect) {
@@ -104,18 +101,19 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
     }
     
     internal func datePickerAction(sender: UIDatePicker){
-        
         date = sender.date
-        
     }
     
     func increaseDurationValue (sender: UIButton) {
+       
         durationValue += 5
         durationRead.text = "\(durationValue) min"
     }
     
     func decreaseDurationValue (sender: UIButton) {
+       
         durationValue -= 5
+       
         if durationValue < 0 {
             durationValue = 0
         }
@@ -129,7 +127,6 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         checkCoreLocationPermission()
-        
     }
     
     func checkCoreLocationPermission () {
@@ -137,21 +134,16 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             
             locationManager.startUpdatingLocation()
-            
-        }
-            
-        else if CLLocationManager.authorizationStatus() == .NotDetermined {
+        
+        } else if CLLocationManager.authorizationStatus() == .NotDetermined {
             
             locationManager.requestWhenInUseAuthorization()
-            
             locationManager.startUpdatingLocation()
-            
-        }
-            
-        else {
+        
+        } else {
+           
             self.delegate?.showAlert()
         }
-        
     }
     
     //MARK: - CLLocatioManagerDelegate
@@ -159,22 +151,24 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         location = locations.last
-        
         locationManager.stopUpdatingLocation()
-        
     }
     
     func reverseGeocoding(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        
         let location = CLLocation(latitude: latitude, longitude: longitude)
+        
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+           
             if error != nil {
                 print(error)
                 return
-            }
-            else if placemarks?.count > 0 {
+            } else if placemarks?.count > 0 {
+               
                 let pm = placemarks![0]
                 let address = ABCreateStringWithAddressDictionary(pm.addressDictionary!, false)
                 self.locationTextField.text = "\(address)"
+               
                 if pm.areasOfInterest?.count > 0 {
                     let areaOfInterest = pm.areasOfInterest?[0]
                     self.locationTextField.text = "\(areaOfInterest!)"
@@ -182,6 +176,4 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
             }
         })
     }
-
-    
 }

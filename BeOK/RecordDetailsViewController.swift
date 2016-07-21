@@ -114,13 +114,11 @@ class RecordDetailsViewController: UIViewController {
             let resultsRecordSymptom = try managedContext.executeFetchRequest(fetchRequestRecordSymptom)
             recordSymptomList = resultsRecordSymptom as! [NSManagedObject]
         }
-            
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
         getSymptoms()
-        
     }
     
     func getSymptoms() {
@@ -138,20 +136,13 @@ class RecordDetailsViewController: UIViewController {
                     if recordSymptomList[j].valueForKey("symptomID") as! String == symptomsList[k].objectID.URIRepresentation().absoluteString {
                     
                         thisRecordSymptomsList.append(symptomsList[k].valueForKey("symptom") as! String)
-                        
                     }
                         
                     k += 1
-                        
                 }
-                    
             }
                 
             j += 1
-                
         }
-        
     }
-
-
 }

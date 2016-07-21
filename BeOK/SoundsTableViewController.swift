@@ -49,12 +49,7 @@ class SoundsTableViewController: UITableViewController {
         catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
-        
-//        //lastSound.insert(currentSound[0], atIndex: 0)
-//       // print(" __ last sound  will appear : \(laSound[0])")
-//        self.selectedSound = sounds[0].valueForKey("sound") as? String
-//        print(" __ selected sound will appear : \(selectedSound)")
-//
+ 
         var i: Int = 0
         
         while i < sounds.count {
@@ -67,9 +62,6 @@ class SoundsTableViewController: UITableViewController {
             
             i += 1
         }
-        
-        print(checked)
-        
     }
     
     override func viewDidLoad() {
@@ -111,7 +103,6 @@ class SoundsTableViewController: UITableViewController {
             
             do {
                 try managedContext.save()
-                print("save successful")
             }
             
             catch let error as NSError  {
@@ -120,11 +111,8 @@ class SoundsTableViewController: UITableViewController {
             
             i += 1
         }
- 
-        print(" __ selected sound  will disappear : \(selectedSound)")
         
         checked = []
-        
     }
     
     // MARK: - Table view data source

@@ -86,7 +86,6 @@ class AddMessageViewController: UIViewController, UITextViewDelegate {
         
         do {
             try managedContext.save()
-            print("save successful")
         }
             
         catch let error as NSError  {

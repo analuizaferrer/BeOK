@@ -12,7 +12,6 @@
 		180E36A21D37F70F00B650E1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180E36A11D37F70F00B650E1 /* CoreLocation.framework */; };
 		180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A581D34129A00700D07 /* AppDelegate.swift */; };
 		180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A5A1D34129A00700D07 /* FirstViewController.swift */; };
-		180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180F6A5C1D34129A00700D07 /* SecondViewController.swift */; };
 		180F6A601D34129A00700D07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180F6A5E1D34129A00700D07 /* Main.storyboard */; };
 		180F6A621D34129A00700D07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180F6A611D34129A00700D07 /* Assets.xcassets */; };
 		180F6A651D34129A00700D07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180F6A631D34129A00700D07 /* LaunchScreen.storyboard */; };
@@ -27,6 +26,7 @@
 		18AAEE7B1D3D869600F89517 /* RecordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */; };
 		EF0FB97D1D3EBA40000A6E60 /* Lake.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF0FB97A1D3EBA40000A6E60 /* Lake.wav */; };
 		EF0FB97E1D3EBA40000A6E60 /* Waves.wav in Resources */ = {isa = PBXBuildFile; fileRef = EF0FB97B1D3EBA40000A6E60 /* Waves.wav */; };
+		F6700FD91D416C7B00FEDDB0 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6700FD81D416C7B00FEDDB0 /* LicenseViewController.swift */; };
 		F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */; };
 		F6D3095C1D381E140051CE99 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */; };
 		F6D4608D1D3FD0F40017CAF9 /* AddMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D4608C1D3FD0F40017CAF9 /* AddMessageViewController.swift */; };
@@ -40,7 +40,6 @@
 		180F6A551D34129A00700D07 /* BeOK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeOK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180F6A581D34129A00700D07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180F6A5A1D34129A00700D07 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		180F6A5C1D34129A00700D07 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		180F6A5F1D34129A00700D07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		180F6A611D34129A00700D07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180F6A641D34129A00700D07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		18AAEE7A1D3D869600F89517 /* RecordDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailsViewController.swift; sourceTree = "<group>"; };
 		EF0FB97A1D3EBA40000A6E60 /* Lake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Lake.wav; sourceTree = "<group>"; };
 		EF0FB97B1D3EBA40000A6E60 /* Waves.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Waves.wav; sourceTree = "<group>"; };
+		F6700FD81D416C7B00FEDDB0 /* LicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F6D3095B1D381E140051CE99 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		F6D4608C1D3FD0F40017CAF9 /* AddMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMessageViewController.swift; sourceTree = "<group>"; };
@@ -133,9 +133,9 @@
 				185ADE8E1D34195400910D08 /* RecordsTableViewController.swift */,
 				185ADE901D3419DE00910D08 /* RecordsTableViewCell.swift */,
 				F6D309561D38194E0051CE99 /* SettingsTableViewController.swift */,
-				180F6A5C1D34129A00700D07 /* SecondViewController.swift */,
 				F6E98A741D3ED8C300281D56 /* SoundsTableViewController.swift */,
 				F6D4608C1D3FD0F40017CAF9 /* AddMessageViewController.swift */,
+				F6700FD81D416C7B00FEDDB0 /* LicenseViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -238,10 +238,10 @@
 				180E365B1D35D93C00B650E1 /* AddRecordViewController.swift in Sources */,
 				F6D4608D1D3FD0F40017CAF9 /* AddMessageViewController.swift in Sources */,
 				185ADE931D341A1A00910D08 /* Record.swift in Sources */,
-				180F6A5D1D34129A00700D07 /* SecondViewController.swift in Sources */,
 				180F6A591D34129A00700D07 /* AppDelegate.swift in Sources */,
 				180F6A5B1D34129A00700D07 /* FirstViewController.swift in Sources */,
 				18AAEE671D396BDA00F89517 /* AddRecordView1.swift in Sources */,
+				F6700FD91D416C7B00FEDDB0 /* LicenseViewController.swift in Sources */,
 				18AAEE7B1D3D869600F89517 /* RecordDetailsViewController.swift in Sources */,
 				F6D309571D38194E0051CE99 /* SettingsTableViewController.swift in Sources */,
 				18AAEE6F1D3AE7FE00F89517 /* AddRecordView3.swift in Sources */,

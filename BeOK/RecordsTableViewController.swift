@@ -24,8 +24,6 @@ class RecordsTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         self.tableView.reloadData()
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,9 +83,6 @@ class RecordsTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         fetchRecords()
-        
-//        countSymptoms()
-        
     }
     
     func fetchRecords() {
@@ -119,7 +114,6 @@ class RecordsTableViewController: UITableViewController {
         countSymptoms()
 
         self.tableView.reloadData()
-
     }
     
     func countSymptoms() {
@@ -142,31 +136,23 @@ class RecordsTableViewController: UITableViewController {
                         if recordSymptomList[j].valueForKey("symptomID") as! String == symptomsList[k].objectID.URIRepresentation().absoluteString {
                             
                             symptomsCount += 1
-                            
                         }
                         
                         k += 1
-                        
                     }
-                    
                 }
                 
                 j += 1
-                
             }
             
            symptomsCountArray.append(symptomsCount)
             
             i += 1
-            
         }
-
-        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
     }
     
     
@@ -186,14 +172,12 @@ class RecordsTableViewController: UITableViewController {
             recordsList.removeAtIndex(indexPath.row)
             
             for (index, item) in recordSymptomList.enumerate() {
-                print(index)
-                print(recordSymptomList.count)
-                
+               
                 if item.valueForKey("recordID") as! String == deletedRecordID{
                     
                     context.deleteObject(recordSymptomList[index] as NSManagedObject)
                     recordSymptomList.removeAtIndex(index)
-                    print("woooe")
+                    
                     break
                 }
                 
@@ -206,33 +190,7 @@ class RecordsTableViewController: UITableViewController {
         }
         
     }
-    
-    /*
- 
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if (editingStyle == UITableViewCellEditingStyle.Delete) {
-     
-     let AppDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-     let context:NSManagedObjectContext = AppDel.managedObjectContext
-     
-     context.deleteObject(messagesList[indexPath.row] as NSManagedObject)
-     messagesList.removeAtIndex(indexPath.row)
-     
-     do{
-     try context.save()
-     } catch {
-     print("error")
-     }
-     
-     self.tableView.reloadData()
-     }
-     }
- 
- 
- 
- 
- */
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if  segue.identifier == "segueToDetails" {
             
