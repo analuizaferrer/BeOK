@@ -186,7 +186,7 @@
 				TargetAttributes = {
 					180F6A541D34129A00700D07 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4BPZR4X6FJ;
+						DevelopmentTeam = 585K33F6HA;
 					};
 				};
 			};
@@ -362,7 +362,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeOK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AnaLuizaFerrer.BeOK;
+				PRODUCT_BUNDLE_IDENTIFIER = AnaFerrerGabriellaLopesHelenaLeitao.BeOK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -376,7 +376,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BeOK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AnaLuizaFerrer.BeOK;
+				PRODUCT_BUNDLE_IDENTIFIER = AnaFerrerGabriellaLopesHelenaLeitao.BeOK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
