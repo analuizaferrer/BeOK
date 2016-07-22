@@ -30,6 +30,9 @@ class AddMessageViewController: UIViewController, UITextViewDelegate {
         newMessage.delegate = self
         
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -91,5 +94,9 @@ class AddMessageViewController: UIViewController, UITextViewDelegate {
         catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 }

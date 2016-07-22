@@ -30,6 +30,9 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+    
         self.firstView = AddRecordView1(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         firstView.delegate = self
         self.secondView = AddRecordView2(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
@@ -51,6 +54,17 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
         
         self.navigationController?.navigationBar.setItems([navItem], animated: false)
 
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        if self.view == firstView {
+             self.view.frame.origin.y -= 150
+        }
+    }
+    func keyboardWillHide(sender: NSNotification) {
+        if self.view == firstView {
+            self.view.frame.origin.y += 150
+        }
     }
     
     func rightBarButtonAction(sender: UIBarButtonItem) {
@@ -108,7 +122,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
             let nextVC = segue.destinationViewController as! RecordsTableViewController
             
             if self.view == thirdView {
-                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextField.text!, description: thirdView.descriptionTextField.text!, otherSymptom: secondView.otherSymptomTextField.text!)
+                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextView.text!, description: thirdView.descriptionTextField.text!, otherSymptom: secondView.otherSymptomTextField.text!)
             }
             
             nextVC.tableView.reloadData()

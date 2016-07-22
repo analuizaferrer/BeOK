@@ -15,7 +15,7 @@ protocol AddRecordDelegate {
     func showAlert ()
 }
 
-class AddRecordView1: UIView, CLLocationManagerDelegate {
+class AddRecordView1: UIView, CLLocationManagerDelegate, UITextViewDelegate {
     
     var delegate: AddRecordDelegate?
     
@@ -26,9 +26,11 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
     var durationPlusButton = UIButton(frame: CGRectMake(130,343,18,36))
     var durationMinusButton = UIButton(frame: CGRectMake(15,337,18,48))
     var locationLabel = UILabel(frame: CGRectMake(15,400,200,18))
-    var locationTextField = UITextField(frame: CGRectMake(15,433,350,20))
+    var locationTextView = UITextView(frame: CGRectMake(15,433,350,100))
     var getLocationButton = UIButton(frame: CGRectMake(170,400,200,18))
     var pageCounter = UIImageView()
+   
+    var placeholder = UILabel()
   
     var durationValue = 30
     var date: NSDate!
@@ -44,8 +46,6 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
             reverseGeocoding(location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,8 +90,16 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
         self.getLocationButton.addTarget(self, action: #selector(updateLocationAction), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(getLocationButton)
         
-        self.locationTextField.placeholder = "i.e. office, home etc"
-        self.addSubview(locationTextField)
+        placeholder.frame = CGRectMake(5.0, 0, locationTextView.bounds.width - 5, 30)
+        placeholder.text = "i.e. office, home etc"
+        placeholder.textColor = UIColor.lightGrayColor()
+        placeholder.textAlignment = .Left
+        
+        locationTextView.addSubview(placeholder)
+        locationTextView.delegate = self
+        locationTextView.font = UIFont(name: "System-Regular", size: 20)
+        locationTextView.contentOffset = CGPointZero
+        self.addSubview(locationTextView)
         
         self.pageCounter.image = UIImage(named: "PageCounter1")
         self.addSubview(pageCounter)
@@ -102,6 +110,14 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        if locationTextView.text.characters.count != 0 {
+            placeholder.text = ""
+        } else {
+            placeholder.text = "i.e. office, home etc"
+        }
     }
     
     internal func datePickerAction(sender: UIDatePicker){
@@ -171,11 +187,11 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
                
                 let pm = placemarks![0]
                 let address = ABCreateStringWithAddressDictionary(pm.addressDictionary!, false)
-                self.locationTextField.text = "\(address)"
+                self.locationTextView.text = "\(address)"
                
                 if pm.areasOfInterest?.count > 0 {
                     let areaOfInterest = pm.areasOfInterest?[0]
-                    self.locationTextField.text = "\(areaOfInterest!)"
+                    self.locationTextView.text = "\(areaOfInterest!)"
                 }
             }
         })
