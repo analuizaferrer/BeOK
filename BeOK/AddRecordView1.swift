@@ -45,6 +45,8 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
         }
     }
     
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -94,6 +96,8 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
         self.pageCounter.image = UIImage(named: "PageCounter1")
         self.addSubview(pageCounter)
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tap)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -175,5 +179,9 @@ class AddRecordView1: UIView, CLLocationManagerDelegate {
                 }
             }
         })
+    }
+    
+    func dismissKeyboard() {
+        self.endEditing(true)
     }
 }
