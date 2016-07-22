@@ -45,25 +45,6 @@ class FirstViewController: UIViewController {
         
         sounds += ["Rainforest", "Cicadas", "Lake", "Waves"]
         urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
-        
-        self.outButton.hidden = true
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        
-        let fetchRequestSound = NSFetchRequest(entityName: "Sound")
-        let fetchRequestMessages = NSFetchRequest(entityName: "Message")
-
-        
-        do {
-            let resultSound = try managedContext.executeFetchRequest(fetchRequestSound)
-            sound = resultSound as! [NSManagedObject]
-            let resultsMessages = try managedContext.executeFetchRequest(fetchRequestMessages)
-            copingMessages = resultsMessages as! [NSManagedObject]
-        }
-        catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
     }
     
     func animateBreathing() {
@@ -124,6 +105,25 @@ class FirstViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+        self.outButton.hidden = true
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequestSound = NSFetchRequest(entityName: "Sound")
+        let fetchRequestMessages = NSFetchRequest(entityName: "Message")
+        
+        
+        do {
+            let resultSound = try managedContext.executeFetchRequest(fetchRequestSound)
+            sound = resultSound as! [NSManagedObject]
+            let resultsMessages = try managedContext.executeFetchRequest(fetchRequestMessages)
+            copingMessages = resultsMessages as! [NSManagedObject]
+        }
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
         breathingTimer = NSTimer.scheduledTimerWithTimeInterval(15.0, target: self, selector: #selector(FirstViewController.animateBreathing), userInfo: nil, repeats: true)
         
         breathingTimer.fire()
@@ -136,6 +136,8 @@ class FirstViewController: UIViewController {
                 do {
                     audioPlayer = try AVAudioPlayer(contentsOfURL: urls[i], fileTypeHint: nil)
                     audioPlayer.play()
+                    
+                    audioPlayer.numberOfLoops = -1
                 }
                 catch let error as NSError {
                     print(error.description)
@@ -150,6 +152,7 @@ class FirstViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         audioPlayer.stop()
         breathingTimer.invalidate()
+        
     }
     
     
