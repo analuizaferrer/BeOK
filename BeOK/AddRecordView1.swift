@@ -25,9 +25,9 @@ class AddRecordView1: UIView, CLLocationManagerDelegate, UITextViewDelegate {
     var durationRead = UILabel(frame: CGRectMake(48,349,65,24))
     var durationPlusButton = UIButton(frame: CGRectMake(130,343,18,36))
     var durationMinusButton = UIButton(frame: CGRectMake(15,337,18,48))
-    var locationLabel = UILabel(frame: CGRectMake(15,400,200,18))
+    var locationLabel = UILabel(frame: CGRectMake(15,400,133,18))
     var locationTextView = UITextView(frame: CGRectMake(15,433,350,100))
-    var getLocationButton = UIButton(frame: CGRectMake(170,400,200,18))
+    var getLocationButton = UIButton(frame: CGRectMake(150,402,150,18))
     var pageCounter = UIImageView()
    
     var placeholder = UILabel()
@@ -86,7 +86,8 @@ class AddRecordView1: UIView, CLLocationManagerDelegate, UITextViewDelegate {
         self.addSubview(locationLabel)
         
         self.getLocationButton.setTitle("Get Current Location", forState: UIControlState.Normal)
-        self.getLocationButton.setTitleColor(UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1), forState: UIControlState.Normal)
+        self.getLocationButton.titleLabel!.font = UIFont.systemFontOfSize(14)
+        self.getLocationButton.setTitleColor(UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 0.6), forState: UIControlState.Normal)
         self.getLocationButton.addTarget(self, action: #selector(updateLocationAction), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(getLocationButton)
         
@@ -97,7 +98,7 @@ class AddRecordView1: UIView, CLLocationManagerDelegate, UITextViewDelegate {
         
         locationTextView.addSubview(placeholder)
         locationTextView.delegate = self
-        locationTextView.font = UIFont(name: "System-Regular", size: 20)
+        locationTextView.font = UIFont.systemFontOfSize(15)
         locationTextView.contentOffset = CGPointZero
         self.addSubview(locationTextView)
         
