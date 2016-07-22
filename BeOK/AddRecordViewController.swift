@@ -30,8 +30,8 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddRecordViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddRecordViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
     
         self.firstView = AddRecordView1(frame: CGRectMake(0,0,view.frame.width,view.frame.height))
         firstView.delegate = self

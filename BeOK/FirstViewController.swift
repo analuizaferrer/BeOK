@@ -43,6 +43,15 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+//        [[NSNotificationCenter defaultCenter]addObserver:self
+//            selector:@selector(yourMethod)
+//        name:UIApplicationDidBecomeActiveNotification
+//        object:nil];
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.createAnimationTimer), name:UIApplicationWillEnterForegroundNotification, object: nil);
+        
+        print("view did load")
+        
         sounds += ["Rainforest", "Cicadas", "Lake", "Waves"]
         urls += [rainforestURL, cicadasURL, lakeURL, wavesURL]
         
@@ -53,6 +62,8 @@ class FirstViewController: UIViewController {
         
         let fetchRequestSound = NSFetchRequest(entityName: "Sound")
         let fetchRequestMessages = NSFetchRequest(entityName: "Message")
+        
+        
 
         
         do {
@@ -79,7 +90,7 @@ class FirstViewController: UIViewController {
         
         let thisMessage = copingMessages[index]
         
-        self.copingMessage.text = thisMessage.valueForKey("message") as? String
+       self.copingMessage.text = thisMessage.valueForKey("message") as? String
         
         UIView.animateWithDuration(4.0, delay: 0.0, options: [], animations: {
             
@@ -121,12 +132,27 @@ class FirstViewController: UIViewController {
         self.index += 1
     }
     
-    
-    override func viewDidAppear(animated: Bool) {
+    func createAnimationTimer() {
+        
+        if breathingTimer.valid {
+            breathingTimer.invalidate()
+        }
+        
+        breathingTimer = NSTimer()
         
         breathingTimer = NSTimer.scheduledTimerWithTimeInterval(15.0, target: self, selector: #selector(FirstViewController.animateBreathing), userInfo: nil, repeats: true)
         
         breathingTimer.fire()
+        
+        print("created timer")
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        createAnimationTimer()
+        
+        print("view did appear")
         
         var i: Int = 0
         
@@ -146,6 +172,7 @@ class FirstViewController: UIViewController {
             i += 1
         }
     }
+    
     
     override func viewDidDisappear(animated: Bool) {
         audioPlayer.stop()
