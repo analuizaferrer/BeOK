@@ -12,7 +12,7 @@ import Foundation
 class AddRecordView3: UIView, UITextViewDelegate {
     
     var descriptionLabel = UILabel(frame: CGRectMake(14.53,91,400,18))
-    var descriptionTextView = UITextView(frame: CGRectMake(14.53,121,350,100))
+    var descriptionTextView = UITextView()
     var pageCounter = UIImageView()
     var placeholder = UILabel()
     
@@ -23,11 +23,12 @@ class AddRecordView3: UIView, UITextViewDelegate {
         self.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(descriptionLabel)
         
-        placeholder.frame = CGRectMake(5.0, 0, descriptionTextView.bounds.width - 5, 30)
+        placeholder.frame = CGRectMake(5.0, 0, self.frame.width - 10, 30)
         placeholder.text = "Write any relevant information"
         placeholder.textColor = UIColor.lightGrayColor()
         placeholder.textAlignment = .Left
-        
+      
+        descriptionTextView = UITextView(frame: CGRectMake(14.53,121,self.frame.width - 29.06,100))
         descriptionTextView.addSubview(placeholder)
         descriptionTextView.delegate = self
         descriptionTextView.font = UIFont.systemFontOfSize(15)

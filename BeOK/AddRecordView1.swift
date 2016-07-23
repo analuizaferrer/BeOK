@@ -26,7 +26,7 @@ class AddRecordView1: UIView, CLLocationManagerDelegate, UITextViewDelegate {
     var durationPlusButton = UIButton(frame: CGRectMake(130,343,18,36))
     var durationMinusButton = UIButton(frame: CGRectMake(15,337,18,48))
     var locationLabel = UILabel(frame: CGRectMake(15,400,133,18))
-    var locationTextView = UITextView(frame: CGRectMake(15,433,350,100))
+    var locationTextView = UITextView()
     var getLocationButton = UIButton(frame: CGRectMake(150,402,150,18))
     var pageCounter = UIImageView()
    
@@ -91,11 +91,14 @@ class AddRecordView1: UIView, CLLocationManagerDelegate, UITextViewDelegate {
         self.getLocationButton.addTarget(self, action: #selector(updateLocationAction), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(getLocationButton)
         
-        placeholder.frame = CGRectMake(5.0, 0, locationTextView.bounds.width - 5, 30)
+        placeholder.frame = CGRectMake(5.0, 0, self.frame.width - 10, 30)
         placeholder.text = "i.e. office, home etc"
         placeholder.textColor = UIColor.lightGrayColor()
         placeholder.textAlignment = .Left
-        
+      
+        locationTextView = UITextView(frame: CGRectMake(15,433,self.frame.width - 30,100))
+
+      
         locationTextView.addSubview(placeholder)
         locationTextView.delegate = self
         locationTextView.font = UIFont.systemFontOfSize(15)
