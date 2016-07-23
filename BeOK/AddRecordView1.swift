@@ -188,6 +188,7 @@ class AddRecordView1: UIView, CLLocationManagerDelegate, UITextViewDelegate {
                
                 let pm = placemarks![0]
                 let address = ABCreateStringWithAddressDictionary(pm.addressDictionary!, false)
+                self.placeholder.text = ""
                 self.locationTextView.text = "\(address)"
                
                 if pm.areasOfInterest?.count > 0 {

@@ -9,11 +9,12 @@
 import UIKit
 import Foundation
 
-class AddRecordView3: UIView {
+class AddRecordView3: UIView, UITextViewDelegate {
     
     var descriptionLabel = UILabel(frame: CGRectMake(14.53,91,400,18))
-    var descriptionTextField = UITextField(frame: CGRectMake(14.53,121,327.55,200))
+    var descriptionTextView = UITextView(frame: CGRectMake(14.53,121,350,100))
     var pageCounter = UIImageView()
+    var placeholder = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,9 +22,17 @@ class AddRecordView3: UIView {
         self.descriptionLabel.text = "What went through your head?"
         self.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         self.addSubview(descriptionLabel)
-        self.descriptionTextField.placeholder = "Write any relevant information"
-        self.descriptionTextField.contentVerticalAlignment = .Top
-        self.addSubview(descriptionTextField)
+        
+        placeholder.frame = CGRectMake(5.0, 0, descriptionTextView.bounds.width - 5, 30)
+        placeholder.text = "Write any relevant information"
+        placeholder.textColor = UIColor.lightGrayColor()
+        placeholder.textAlignment = .Left
+        
+        descriptionTextView.addSubview(placeholder)
+        descriptionTextView.delegate = self
+        descriptionTextView.font = UIFont.systemFontOfSize(15)
+        descriptionTextView.contentOffset = CGPointZero
+        self.addSubview(descriptionTextView)
         
         pageCounter = UIImageView(frame: CGRectMake(self.frame.midX - 65.5, self.frame.height - 39, 131, 26))
         
@@ -33,6 +42,14 @@ class AddRecordView3: UIView {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.addGestureRecognizer(tap)
         
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        if descriptionTextView.text.characters.count != 0 {
+            placeholder.text = ""
+        } else {
+            placeholder.text = "Write any relevant information"
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -37,6 +37,8 @@ class RecordsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! RecordsTableViewCell
         
+        UITableViewCell.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
+        
         let thisRecord = recordsList[indexPath.row]
         let thisSymptomsCount = symptomsCountArray[indexPath.row]
         
@@ -51,9 +53,10 @@ class RecordsTableViewController: UITableViewController {
         monthFormatter.dateFormat = "MMM"
         let selectedMonth: NSString = monthFormatter.stringFromDate(thisRecord.valueForKey("date") as! NSDate)
         cell.monthLabel.text = selectedMonth as String
-        
+    
         cell.descriptionLabel.textColor = UIColor(red: 67/255, green: 73/255, blue: 156/255, alpha: 1)
         cell.descriptionLabel.text = thisRecord.valueForKey("attackDescription") as? String
+        
         
         if thisSymptomsCount > 1 {
             cell.symptomsLabel.text = "\(thisSymptomsCount) symptoms"

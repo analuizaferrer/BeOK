@@ -122,7 +122,7 @@ class AddRecordViewController: UIViewController, CLLocationManagerDelegate, AddR
             let nextVC = segue.destinationViewController as! RecordsTableViewController
             
             if self.view == thirdView {
-                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextView.text!, description: thirdView.descriptionTextField.text!, otherSymptom: secondView.otherSymptomTextField.text!)
+                self.saveRecord(firstView.date, duration: firstView.durationValue, location: firstView.locationTextView.text!, description: thirdView.descriptionTextView.text!, otherSymptom: secondView.otherSymptomTextField.text!)
             }
             
             nextVC.tableView.reloadData()
