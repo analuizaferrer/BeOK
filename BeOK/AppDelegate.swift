@@ -25,6 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         UITabBar.appearance().tintColor = UIColor(red:0.26, green:0.29, blue:0.61, alpha:1.0)
         
+        let notificationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Alert, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+        
+        self.createLocalNotification()
+        
         let hasLaunchedKey = "HasLaunched"
         let defaults = NSUserDefaults.standardUserDefaults()
         let hasLaunched = defaults.boolForKey(hasLaunchedKey)
@@ -200,5 +205,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func createLocalNotification() {
+      
+        let localNotification = UILocalNotification()
+        
+        // The notification will show up 6 seconds after the app was launched
+        localNotification.fireDate = NSDate(timeIntervalSinceNow: 6)
+        
+        // The notification will show up 24 hours after the app was lauched
+//        localNotification.fireDate = NSDate(timeIntervalSinceNow: 86400)
+        
+        localNotification.applicationIconBadgeNumber = 1
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        
+        localNotification.userInfo = [
+            "message":"Would like to register a record?"
+        ]
+        
+        localNotification.alertBody = "How was your day?"
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        if application.applicationState == .Active {
+        
+        }
+//        } else {
+//            
+//        }
+        
+        self.takeActionWithNotification(notification)
+    }
+    
+    func takeActionWithNotification(localNotification: UILocalNotification) {
+        
+        let notificationMessage = localNotification.userInfo!["message"] as! String
+        
+        let alertController = UIAlertController(title: "Hey!", message: notificationMessage, preferredStyle: .Alert)
+        let remindMeLaterAction = UIAlertAction(title: "Remind me later", style: .Default, handler: nil)
+        let sureAction = UIAlertAction(title: "Sure", style: .Default) { (action) -> Void in
+            let tabBarController = self.window?.rootViewController as! UITabBarController
+            tabBarController.selectedIndex = 1
+        }
+        
+        alertController.addAction(remindMeLaterAction)
+        alertController.addAction(sureAction)
+        
+        self.window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+        localNotification.applicationIconBadgeNumber = 0
+    }
 }
 
